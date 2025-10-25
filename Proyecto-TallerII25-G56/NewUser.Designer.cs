@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewUser));
             CBTipoUsuario = new ComboBox();
             LTipoUsuario = new Label();
@@ -47,18 +48,22 @@
             CBMostrarContrasenia = new CheckBox();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            errorProvider1 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // CBTipoUsuario
             // 
+            CBTipoUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
             CBTipoUsuario.FormattingEnabled = true;
             CBTipoUsuario.Items.AddRange(new object[] { "--Seleccione una opción--", "Cajero", "Gerente", "Administrador" });
             CBTipoUsuario.Location = new Point(187, 361);
             CBTipoUsuario.Name = "CBTipoUsuario";
             CBTipoUsuario.Size = new Size(183, 23);
             CBTipoUsuario.TabIndex = 21;
+            CBTipoUsuario.Validating += CBTipoUsuario_Validating;
             // 
             // LTipoUsuario
             // 
@@ -77,6 +82,7 @@
             TBCorreo.Name = "TBCorreo";
             TBCorreo.Size = new Size(183, 23);
             TBCorreo.TabIndex = 26;
+            TBCorreo.Validating += TBCorreo_Validating;
             // 
             // LDNI
             // 
@@ -96,6 +102,7 @@
             TBDNI.Size = new Size(183, 23);
             TBDNI.TabIndex = 24;
             TBDNI.KeyPress += TBDNI_KeyPress;
+            TBDNI.Validating += TBDNI_Validating;
             // 
             // TBContrasenia
             // 
@@ -104,6 +111,7 @@
             TBContrasenia.Size = new Size(183, 23);
             TBContrasenia.TabIndex = 22;
             TBContrasenia.UseSystemPasswordChar = true;
+            TBContrasenia.Validating += TBContrasenia_Validating;
             // 
             // TBApellido
             // 
@@ -112,6 +120,7 @@
             TBApellido.Size = new Size(183, 23);
             TBApellido.TabIndex = 23;
             TBApellido.KeyPress += TBApellido_KeyPress;
+            TBApellido.Validating += TBApellido_Validating;
             // 
             // TBNombre
             // 
@@ -121,6 +130,7 @@
             TBNombre.TabIndex = 20;
             TBNombre.TextChanged += TBNombre_TextChanged;
             TBNombre.KeyPress += TBNombre_KeyPress;
+            TBNombre.Validating += TBNombre_Validating;
             // 
             // LContrasenia
             // 
@@ -168,8 +178,9 @@
             // 
             // BAgregar
             // 
-            BAgregar.BackColor = Color.LightGreen;
+            BAgregar.BackColor = SystemColors.ActiveBorder;
             BAgregar.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BAgregar.ForeColor = Color.DarkGreen;
             BAgregar.ImageAlign = ContentAlignment.MiddleLeft;
             BAgregar.Location = new Point(245, 422);
             BAgregar.Name = "BAgregar";
@@ -189,12 +200,13 @@
             LNuevoUsuario.Size = new Size(202, 33);
             LNuevoUsuario.TabIndex = 29;
             LNuevoUsuario.Text = "Nuevo usuario";
-            LNuevoUsuario.Click += LNuevoUsuario_Click;
             // 
             // BCancelar
             // 
-            BCancelar.BackColor = Color.DarkSalmon;
+            BCancelar.BackColor = SystemColors.ButtonShadow;
+            BCancelar.CausesValidation = false;
             BCancelar.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BCancelar.ForeColor = Color.SaddleBrown;
             BCancelar.ImageAlign = ContentAlignment.TopLeft;
             BCancelar.Location = new Point(29, 422);
             BCancelar.Name = "BCancelar";
@@ -234,10 +246,16 @@
             pictureBox2.TabIndex = 33;
             pictureBox2.TabStop = false;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // NewUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LavenderBlush;
+            CausesValidation = false;
             ClientSize = new Size(411, 567);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
@@ -261,6 +279,7 @@
             Text = "Nuevo";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -285,5 +304,6 @@
         private CheckBox CBMostrarContrasenia;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private ErrorProvider errorProvider1;
     }
 }

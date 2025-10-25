@@ -35,18 +35,26 @@ namespace Proyecto_TallerII25_G56
             menuStrip = new MenuStrip();
             adminMenu = new ToolStripMenuItem();
             profileToolStripMenuItem = new ToolStripMenuItem();
-            exitToolStripMenuItem = new ToolStripMenuItem();
-            usuariosMenu = new ToolStripMenuItem();
+            ExitToolStripMenuItem = new ToolStripMenuItem();
+            UsuariosMenu = new ToolStripMenuItem();
             AddNewUserToolStripMenuItem = new ToolStripMenuItem();
-            ModifyUserToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator6 = new ToolStripSeparator();
-            usersListToolStripMenuItem = new ToolStripMenuItem();
+            UsersListToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator7 = new ToolStripSeparator();
             productsMenu = new ToolStripMenuItem();
-            notAvailableToolStripMenuItem = new ToolStripMenuItem();
+            AddNewProductMenuStrip = new ToolStripMenuItem();
             listarProductosToolStripMenuItem = new ToolStripMenuItem();
+            rubroToolStripMenuItem = new ToolStripMenuItem();
+            AddNewRubroToolStripMenuItem = new ToolStripMenuItem();
+            verRubrosToolStripMenuItem = new ToolStripMenuItem();
+            proveedoresToolStripMenuItem = new ToolStripMenuItem();
+            AddNewProveedorToolStripMenuItem = new ToolStripMenuItem();
+            verProveedoresToolStripMenuItem = new ToolStripMenuItem();
             stockMenu = new ToolStripMenuItem();
             stockToolStripMenuItem = new ToolStripMenuItem();
+            ventasToolStripMenuItem = new ToolStripMenuItem();
+            registrarVentaToolStripMenuItem = new ToolStripMenuItem();
+            historialDeVentasToolStripMenuItem = new ToolStripMenuItem();
             toolTip = new ToolTip(components);
             menuStrip.SuspendLayout();
             SuspendLayout();
@@ -56,7 +64,7 @@ namespace Proyecto_TallerII25_G56
             menuStrip.BackColor = Color.Transparent;
             menuStrip.BackgroundImageLayout = ImageLayout.None;
             menuStrip.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            menuStrip.Items.AddRange(new ToolStripItem[] { adminMenu, usuariosMenu, productsMenu, stockMenu });
+            menuStrip.Items.AddRange(new ToolStripItem[] { adminMenu, UsuariosMenu, productsMenu, stockMenu, ventasToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(7, 2, 0, 2);
@@ -68,15 +76,15 @@ namespace Proyecto_TallerII25_G56
             // 
             adminMenu.Alignment = ToolStripItemAlignment.Right;
             adminMenu.BackColor = Color.PaleGoldenrod;
-            adminMenu.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, exitToolStripMenuItem });
+            adminMenu.DropDownItems.AddRange(new ToolStripItem[] { profileToolStripMenuItem, ExitToolStripMenuItem });
             adminMenu.ForeColor = Color.FromArgb(128, 64, 0);
             adminMenu.ImageTransparentColor = Color.Transparent;
             adminMenu.Name = "adminMenu";
-            adminMenu.Size = new Size(70, 23);
-            adminMenu.Text = "Admin";
+            adminMenu.Size = new Size(12, 23);
             // 
             // profileToolStripMenuItem
             // 
+            profileToolStripMenuItem.Enabled = false;
             profileToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             profileToolStripMenuItem.ImageTransparentColor = Color.Black;
             profileToolStripMenuItem.Name = "profileToolStripMenuItem";
@@ -84,26 +92,28 @@ namespace Proyecto_TallerII25_G56
             profileToolStripMenuItem.Size = new Size(120, 24);
             profileToolStripMenuItem.Text = "Mi perfil";
             // 
-            // exitToolStripMenuItem
+            // ExitToolStripMenuItem
             // 
-            exitToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            exitToolStripMenuItem.ImageAlign = ContentAlignment.MiddleLeft;
-            exitToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
-            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.ShowShortcutKeys = false;
-            exitToolStripMenuItem.Size = new Size(120, 24);
-            exitToolStripMenuItem.Text = "Salir";
-            exitToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
-            exitToolStripMenuItem.TextImageRelation = TextImageRelation.TextAboveImage;
+            ExitToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ExitToolStripMenuItem.ImageAlign = ContentAlignment.MiddleLeft;
+            ExitToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            ExitToolStripMenuItem.ShowShortcutKeys = false;
+            ExitToolStripMenuItem.Size = new Size(120, 24);
+            ExitToolStripMenuItem.Text = "Salir";
+            ExitToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
+            ExitToolStripMenuItem.TextImageRelation = TextImageRelation.TextAboveImage;
+            ExitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
             // 
-            // usuariosMenu
+            // UsuariosMenu
             // 
-            usuariosMenu.BackColor = Color.FromArgb(128, 64, 0);
-            usuariosMenu.DropDownItems.AddRange(new ToolStripItem[] { AddNewUserToolStripMenuItem, ModifyUserToolStripMenuItem, toolStripSeparator6, usersListToolStripMenuItem, toolStripSeparator7 });
-            usuariosMenu.ForeColor = Color.PaleGoldenrod;
-            usuariosMenu.Name = "usuariosMenu";
-            usuariosMenu.Size = new Size(90, 23);
-            usuariosMenu.Text = "Usuarios";
+            UsuariosMenu.BackColor = Color.FromArgb(128, 64, 0);
+            UsuariosMenu.DropDownItems.AddRange(new ToolStripItem[] { AddNewUserToolStripMenuItem, toolStripSeparator6, UsersListToolStripMenuItem, toolStripSeparator7 });
+            UsuariosMenu.ForeColor = Color.PaleGoldenrod;
+            UsuariosMenu.Name = "UsuariosMenu";
+            UsuariosMenu.Size = new Size(90, 23);
+            UsuariosMenu.Text = "Usuarios";
+            UsuariosMenu.Click += usuariosMenu_Click;
             // 
             // AddNewUserToolStripMenuItem
             // 
@@ -111,67 +121,106 @@ namespace Proyecto_TallerII25_G56
             AddNewUserToolStripMenuItem.ImageTransparentColor = Color.Black;
             AddNewUserToolStripMenuItem.Name = "AddNewUserToolStripMenuItem";
             AddNewUserToolStripMenuItem.ShowShortcutKeys = false;
-            AddNewUserToolStripMenuItem.Size = new Size(236, 24);
+            AddNewUserToolStripMenuItem.Size = new Size(211, 24);
             AddNewUserToolStripMenuItem.Text = "Agregar nuevo usuario";
             AddNewUserToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
             AddNewUserToolStripMenuItem.Click += AddNewUserToolStripMenuItem_Click;
             // 
-            // ModifyUserToolStripMenuItem
-            // 
-            ModifyUserToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ModifyUserToolStripMenuItem.ImageTransparentColor = Color.Black;
-            ModifyUserToolStripMenuItem.Name = "ModifyUserToolStripMenuItem";
-            ModifyUserToolStripMenuItem.ShowShortcutKeys = false;
-            ModifyUserToolStripMenuItem.Size = new Size(236, 24);
-            ModifyUserToolStripMenuItem.Text = "Modificar usuario existente";
-            ModifyUserToolStripMenuItem.Click += ModifyUserToolStripMenuItem_Click;
-            // 
             // toolStripSeparator6
             // 
             toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(233, 6);
+            toolStripSeparator6.Size = new Size(208, 6);
             // 
-            // usersListToolStripMenuItem
+            // UsersListToolStripMenuItem
             // 
-            usersListToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            usersListToolStripMenuItem.ImageTransparentColor = Color.Black;
-            usersListToolStripMenuItem.Name = "usersListToolStripMenuItem";
-            usersListToolStripMenuItem.ShowShortcutKeys = false;
-            usersListToolStripMenuItem.Size = new Size(236, 24);
-            usersListToolStripMenuItem.Text = "Listar usuarios";
+            UsersListToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            UsersListToolStripMenuItem.ImageTransparentColor = Color.Black;
+            UsersListToolStripMenuItem.Name = "UsersListToolStripMenuItem";
+            UsersListToolStripMenuItem.ShowShortcutKeys = false;
+            UsersListToolStripMenuItem.Size = new Size(211, 24);
+            UsersListToolStripMenuItem.Text = "Lista de usuarios";
+            UsersListToolStripMenuItem.Click += UsersListToolStripMenuItem_Click;
             // 
             // toolStripSeparator7
             // 
             toolStripSeparator7.Name = "toolStripSeparator7";
-            toolStripSeparator7.Size = new Size(233, 6);
+            toolStripSeparator7.Size = new Size(208, 6);
             // 
             // productsMenu
             // 
             productsMenu.BackColor = Color.PaleGoldenrod;
-            productsMenu.DropDownItems.AddRange(new ToolStripItem[] { notAvailableToolStripMenuItem, listarProductosToolStripMenuItem });
+            productsMenu.DropDownItems.AddRange(new ToolStripItem[] { AddNewProductMenuStrip, listarProductosToolStripMenuItem, rubroToolStripMenuItem, proveedoresToolStripMenuItem });
             productsMenu.ForeColor = Color.FromArgb(128, 64, 0);
             productsMenu.Name = "productsMenu";
             productsMenu.Size = new Size(101, 23);
             productsMenu.Text = "Productos";
+            productsMenu.Click += productsMenu_Click;
             // 
-            // notAvailableToolStripMenuItem
+            // AddNewProductMenuStrip
             // 
-            notAvailableToolStripMenuItem.CheckOnClick = true;
-            notAvailableToolStripMenuItem.Enabled = false;
-            notAvailableToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            notAvailableToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
-            notAvailableToolStripMenuItem.Name = "notAvailableToolStripMenuItem";
-            notAvailableToolStripMenuItem.ShowShortcutKeys = false;
-            notAvailableToolStripMenuItem.Size = new Size(220, 24);
-            notAvailableToolStripMenuItem.Text = "Agregar nuevo producto";
+            AddNewProductMenuStrip.CheckOnClick = true;
+            AddNewProductMenuStrip.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddNewProductMenuStrip.ImageScaling = ToolStripItemImageScaling.None;
+            AddNewProductMenuStrip.Name = "AddNewProductMenuStrip";
+            AddNewProductMenuStrip.ShowShortcutKeys = false;
+            AddNewProductMenuStrip.Size = new Size(220, 24);
+            AddNewProductMenuStrip.Text = "Agregar nuevo producto";
+            AddNewProductMenuStrip.Click += notAvailableToolStripMenuItem_Click;
             // 
             // listarProductosToolStripMenuItem
             // 
-            listarProductosToolStripMenuItem.Enabled = false;
             listarProductosToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             listarProductosToolStripMenuItem.Name = "listarProductosToolStripMenuItem";
             listarProductosToolStripMenuItem.Size = new Size(220, 24);
-            listarProductosToolStripMenuItem.Text = "Listar productos";
+            listarProductosToolStripMenuItem.Text = "Lista de productos";
+            listarProductosToolStripMenuItem.Click += listarProductosToolStripMenuItem_Click;
+            // 
+            // rubroToolStripMenuItem
+            // 
+            rubroToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { AddNewRubroToolStripMenuItem, verRubrosToolStripMenuItem });
+            rubroToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            rubroToolStripMenuItem.Name = "rubroToolStripMenuItem";
+            rubroToolStripMenuItem.Size = new Size(220, 24);
+            rubroToolStripMenuItem.Text = "Rubro";
+            // 
+            // AddNewRubroToolStripMenuItem
+            // 
+            AddNewRubroToolStripMenuItem.Font = new Font("Arial Narrow", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddNewRubroToolStripMenuItem.Name = "AddNewRubroToolStripMenuItem";
+            AddNewRubroToolStripMenuItem.Size = new Size(153, 22);
+            AddNewRubroToolStripMenuItem.Text = "Agregar nuevo";
+            AddNewRubroToolStripMenuItem.Click += AddNewRubroToolStripMenuItem_Click;
+            // 
+            // verRubrosToolStripMenuItem
+            // 
+            verRubrosToolStripMenuItem.Font = new Font("Arial Narrow", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            verRubrosToolStripMenuItem.Name = "verRubrosToolStripMenuItem";
+            verRubrosToolStripMenuItem.Size = new Size(153, 22);
+            verRubrosToolStripMenuItem.Text = "Ver rubros";
+            // 
+            // proveedoresToolStripMenuItem
+            // 
+            proveedoresToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { AddNewProveedorToolStripMenuItem, verProveedoresToolStripMenuItem });
+            proveedoresToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
+            proveedoresToolStripMenuItem.Size = new Size(220, 24);
+            proveedoresToolStripMenuItem.Text = "Proveedores";
+            // 
+            // AddNewProveedorToolStripMenuItem
+            // 
+            AddNewProveedorToolStripMenuItem.Font = new Font("Arial Narrow", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddNewProveedorToolStripMenuItem.Name = "AddNewProveedorToolStripMenuItem";
+            AddNewProveedorToolStripMenuItem.Size = new Size(162, 22);
+            AddNewProveedorToolStripMenuItem.Text = "Agregar nuevo";
+            AddNewProveedorToolStripMenuItem.Click += AddNewProveedorToolStripMenuItem_Click;
+            // 
+            // verProveedoresToolStripMenuItem
+            // 
+            verProveedoresToolStripMenuItem.Font = new Font("Arial Narrow", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            verProveedoresToolStripMenuItem.Name = "verProveedoresToolStripMenuItem";
+            verProveedoresToolStripMenuItem.Size = new Size(162, 22);
+            verProveedoresToolStripMenuItem.Text = "Ver proveedores";
+            verProveedoresToolStripMenuItem.Click += verProveedoresToolStripMenuItem_Click;
             // 
             // stockMenu
             // 
@@ -190,6 +239,31 @@ namespace Proyecto_TallerII25_G56
             stockToolStripMenuItem.Size = new Size(165, 24);
             stockToolStripMenuItem.Text = "No disponible";
             // 
+            // ventasToolStripMenuItem
+            // 
+            ventasToolStripMenuItem.BackColor = Color.PaleGoldenrod;
+            ventasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { registrarVentaToolStripMenuItem, historialDeVentasToolStripMenuItem });
+            ventasToolStripMenuItem.ForeColor = Color.FromArgb(128, 64, 0);
+            ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
+            ventasToolStripMenuItem.Size = new Size(73, 23);
+            ventasToolStripMenuItem.Text = "Ventas";
+            // 
+            // registrarVentaToolStripMenuItem
+            // 
+            registrarVentaToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            registrarVentaToolStripMenuItem.Name = "registrarVentaToolStripMenuItem";
+            registrarVentaToolStripMenuItem.Size = new Size(193, 24);
+            registrarVentaToolStripMenuItem.Text = "Registrar venta";
+            registrarVentaToolStripMenuItem.Click += registrarVentaToolStripMenuItem_Click;
+            // 
+            // historialDeVentasToolStripMenuItem
+            // 
+            historialDeVentasToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            historialDeVentasToolStripMenuItem.Name = "historialDeVentasToolStripMenuItem";
+            historialDeVentasToolStripMenuItem.Size = new Size(193, 24);
+            historialDeVentasToolStripMenuItem.Text = "Historial de ventas";
+            historialDeVentasToolStripMenuItem.Click += historialDeVentasToolStripMenuItem_Click;
+            // 
             // UserPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -202,6 +276,8 @@ namespace Proyecto_TallerII25_G56
             Margin = new Padding(4, 3, 4, 3);
             Name = "UserPanel";
             Text = "Panel de usuario";
+            Load += UserPanel_Load;
+            Resize += UserPanel_Resize;
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
             ResumeLayout(false);
@@ -215,6 +291,21 @@ namespace Proyecto_TallerII25_G56
             newUser.MdiParent = this;
             newUser.Show();
         }
+
+        private void UsersListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsersList usersList = new UsersList();
+            usersList.MdiParent = this;
+            usersList.Show();
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SesionActual.Limpiar();
+            this.Close();
+            Login login = new Login();
+            login.ShowDialog();
+        }
         #endregion
 
 
@@ -223,17 +314,25 @@ namespace Proyecto_TallerII25_G56
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem adminMenu;
         private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usuariosMenu;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UsuariosMenu;
         private System.Windows.Forms.ToolStripMenuItem AddNewUserToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usersListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ModifyUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UsersListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productsMenu;
-        private System.Windows.Forms.ToolStripMenuItem notAvailableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddNewProductMenuStrip;
         private System.Windows.Forms.ToolTip toolTip;
         private ToolStripMenuItem stockMenu;
         private ToolStripMenuItem stockToolStripMenuItem;
         private ToolStripMenuItem listarProductosToolStripMenuItem;
+        private ToolStripMenuItem ventasToolStripMenuItem;
+        private ToolStripMenuItem registrarVentaToolStripMenuItem;
+        private ToolStripMenuItem rubroToolStripMenuItem;
+        private ToolStripMenuItem proveedoresToolStripMenuItem;
+        private ToolStripMenuItem AddNewRubroToolStripMenuItem;
+        private ToolStripMenuItem verRubrosToolStripMenuItem;
+        private ToolStripMenuItem AddNewProveedorToolStripMenuItem;
+        private ToolStripMenuItem verProveedoresToolStripMenuItem;
+        private ToolStripMenuItem historialDeVentasToolStripMenuItem;
     }
 }
 

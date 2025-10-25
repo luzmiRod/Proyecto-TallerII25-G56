@@ -20,8 +20,10 @@ namespace Proyecto_TallerII25_G56
 
         private void ingresarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Login login = new Login();
             login.Show();
+            
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
