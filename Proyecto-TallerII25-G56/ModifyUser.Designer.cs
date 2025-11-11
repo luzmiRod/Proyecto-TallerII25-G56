@@ -50,8 +50,9 @@
             // 
             // BCancelar
             // 
-            BCancelar.BackColor = Color.DarkSalmon;
+            BCancelar.BackColor = SystemColors.ButtonShadow;
             BCancelar.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BCancelar.ForeColor = Color.SaddleBrown;
             BCancelar.ImageAlign = ContentAlignment.TopLeft;
             BCancelar.Location = new Point(29, 347);
             BCancelar.Name = "BCancelar";
@@ -60,6 +61,7 @@
             BCancelar.Text = "Cancelar";
             BCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BCancelar.UseVisualStyleBackColor = false;
+            BCancelar.Click += BCancelar_Click;
             // 
             // LModificarUsuario
             // 
@@ -73,8 +75,9 @@
             // 
             // BModificar
             // 
-            BModificar.BackColor = Color.LightGreen;
+            BModificar.BackColor = SystemColors.ActiveBorder;
             BModificar.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BModificar.ForeColor = Color.DarkGreen;
             BModificar.ImageAlign = ContentAlignment.MiddleLeft;
             BModificar.Location = new Point(245, 347);
             BModificar.Name = "BModificar";
@@ -83,6 +86,7 @@
             BModificar.Text = "Modificar";
             BModificar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BModificar.UseVisualStyleBackColor = false;
+            BModificar.Click += BModificar_Click;
             // 
             // CBTipoUsuario
             // 
@@ -142,6 +146,7 @@
             TBNombre.Name = "TBNombre";
             TBNombre.Size = new Size(183, 23);
             TBNombre.TabIndex = 37;
+            TBNombre.TextChanged += TBNombre_TextChanged;
             // 
             // LCorreo
             // 
@@ -198,6 +203,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LavenderBlush;
             ClientSize = new Size(414, 498);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);

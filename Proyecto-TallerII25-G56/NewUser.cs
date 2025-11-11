@@ -23,44 +23,48 @@ namespace Proyecto_TallerII25_G56
             CBTipoUsuario.SelectedIndex = 0; //muestra el primer valor del ComboBox
             TBContrasenia.UseSystemPasswordChar = true;
 
+            //redimension del icono warning
+            Icon iconOriginal = new Icon("resources/circle_warning.ico");
+            Bitmap bitmap = new Bitmap(iconOriginal.ToBitmap(), new Size(20, 20));
+            Icon resizedIcon = Icon.FromHandle(bitmap.GetHicon());
+            //asignacion del icono redimensionado al ErrorProvider
+            errorProvider1.Icon = resizedIcon;
 
+            //deshabilitar boton agregar inicialmente
+            BAgregar.Enabled = false;
+
+            //suscripcion al evento TextChanged y SelectedIndexChanged para validar el formulario
+            TBNombre.TextChanged += (s, e) => ValidarFormulario();
+            TBApellido.TextChanged += (s, e) => ValidarFormulario();
+            TBDNI.TextChanged += (s, e) => ValidarFormulario();
+            TBCorreo.TextChanged += (s, e) => ValidarFormulario();
+            TBContrasenia.TextChanged += (s, e) => ValidarFormulario();
+            CBTipoUsuario.SelectedIndexChanged += (s, e) => ValidarFormulario();
         }
-
-        private void TBNombre_TextChanged(object sender, EventArgs e)
+        private void ValidarFormulario()
         {
+            bool camposCompletos =
+                !string.IsNullOrWhiteSpace(TBNombre.Text) &&
+                !string.IsNullOrWhiteSpace(TBApellido.Text) &&
+                !string.IsNullOrWhiteSpace(TBDNI.Text) &&
+                !string.IsNullOrWhiteSpace(TBCorreo.Text) &&
+                !string.IsNullOrWhiteSpace(TBContrasenia.Text) &&
+                TBContrasenia.Text.Length >= 6 && // contraseña mínima
+                CBTipoUsuario.SelectedIndex > 0; // debe ser 1 o más
 
+            BAgregar.Enabled = camposCompletos;
         }
 
         private void BAgregar_Click_1(object sender, EventArgs e)
         {
-            // Validar que los campos no estén vacíos
-            if (string.IsNullOrWhiteSpace(TBCorreo.Text) ||
-                string.IsNullOrWhiteSpace(TBContrasenia.Text) ||
-                string.IsNullOrWhiteSpace(TBDNI.Text) ||
-                string.IsNullOrWhiteSpace(TBNombre.Text) ||
-                string.IsNullOrWhiteSpace(TBApellido.Text) ||
-                CBTipoUsuario.SelectedIndex < 0)
+            if (!ValidateChildren()) // fuerza que todos los Validating se ejecuten
             {
-                MessageBox.Show("Por favor, complete todos los campos antes de continuar.");
-                return;
-            }
-
-            // Validación del formato de correo
-            if (!Regex.IsMatch(TBCorreo.Text.Trim(), @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-            {
-                MessageBox.Show("El correo ingresado no es válido.");
-                return;
-            }
-
-            // Validación de la longitud mínima de contraseña
-            if (TBContrasenia.Text.Trim().Length < 6)
-            {
-                MessageBox.Show("La contraseña debe tener al menos 6 caracteres.");
+                MessageBox.Show("Complete todos los campos obligatorios");
                 return;
             }
 
             // Contraseña encriptada antes de guardar
-            string hashedPassword = HashPassword(TBContrasenia.Text.Trim());
+            string hashedPassword = PasswordUtils.HashPassword(TBContrasenia.Text.Trim());
 
             ConexionBD conexion = new ConexionBD();
             using (SqlConnection sqlConnection = conexion.GetConnection())
@@ -85,17 +89,47 @@ namespace Proyecto_TallerII25_G56
 
                         if (result > 0)
                         {
-                            MessageBox.Show("Usuario agregado exitosamente.");
+                            MessageBox.Show("Usuario agregado exitosamente", "¡Hecho!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //limpiar campos
+                            TBNombre.Clear();
+                            TBApellido.Clear();
+                            TBDNI.Clear();
+                            TBCorreo.Clear();
+                            TBContrasenia.Clear();
+                            CBTipoUsuario.SelectedIndex = 0;
                         }
                         else
                         {
-                            MessageBox.Show("Error al agregar el usuario.");
+                            MessageBox.Show("Error al agregar el usuario", "Error", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                         }
                     }
                 }
                 catch (SqlException sqlEx)
                 {
-                    MessageBox.Show($"Error de SQL Server: {sqlEx.Message}\nCódigo: {sqlEx.Number}");
+                    // Código de error para violación de restricción UNIQUE (Duplicate Key)
+                    if (sqlEx.Number == 2627 || sqlEx.Number == 2601)
+                    {
+                        string mensajePersonalizado = "Error de duplicidad. ";
+
+                        // Inspeccionar el mensaje de error para determinar qué campo está duplicado
+                        if (sqlEx.Message.Contains("UQ_Usuario_Correo") || sqlEx.Message.Contains("correo"))
+                        {
+                            mensajePersonalizado += "El **correo electrónico** ya está registrado para otro usuario.";
+                        }
+                        else if (sqlEx.Message.Contains("UQ_Usuario_DNI") || sqlEx.Message.Contains("dni"))
+                        {
+                            mensajePersonalizado += "El **DNI** ya está registrado para otro usuario.";
+                        }
+                        else
+                        {
+                            mensajePersonalizado += "Ya existe un registro con un valor único duplicado.";
+                        }
+
+                        MessageBox.Show(mensajePersonalizado, "Error de Duplicidad",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -103,31 +137,6 @@ namespace Proyecto_TallerII25_G56
                 }
             }
         }
-
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-                foreach (var b in bytes)
-                {
-                    builder.Append(b.ToString("x2")); // convierte en hex
-                }
-                return builder.ToString();
-            }
-        }
-
-        private void BAgregar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LNuevoUsuario_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void TBDNI_KeyPress(object sender, KeyPressEventArgs e)
         {
             //permite el ingreso de caracteres del tipo digit y que se pueda borrar
@@ -170,6 +179,86 @@ namespace Proyecto_TallerII25_G56
         private void BCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void TBNombre_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TBNombre.Text))
+            {
+                errorProvider1.SetError(TBNombre, "El nombre es obligatorio.");
+            }
+            else
+            {
+                errorProvider1.SetError(TBNombre, "");
+            }
+        }
+
+        private void TBApellido_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TBApellido.Text))
+            {
+                errorProvider1.SetError(TBApellido, "El apellido es obligatorio.");
+            }
+            else
+            {
+                errorProvider1.SetError(TBApellido, "");
+            }
+        }
+
+        private void TBDNI_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TBDNI.Text))
+            {
+                errorProvider1.SetError(TBDNI, "El DNI es obligatorio.");
+            }
+            else
+            {
+                errorProvider1.SetError(TBDNI, "");
+            }
+        }
+
+        private void TBCorreo_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TBCorreo.Text))
+            {
+                errorProvider1.SetError(TBCorreo, "El correo es obligatorio.");
+            }
+            else if (!Regex.IsMatch(TBCorreo.Text.Trim(), @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                errorProvider1.SetError(TBCorreo, "Formato de correo inválido.");
+            }
+            else
+            {
+                errorProvider1.SetError(TBCorreo, "");
+            }
+        }
+
+        private void TBContrasenia_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TBContrasenia.Text))
+            {
+                errorProvider1.SetError(TBContrasenia, "La contraseña es obligatoria.");
+            }
+            else if (TBContrasenia.Text.Length < 6)
+            {
+                errorProvider1.SetError(TBContrasenia, "Debe tener al menos 6 caracteres.");
+            }
+            else
+            {
+                errorProvider1.SetError(TBContrasenia, "");
+            }
+        }
+
+        private void CBTipoUsuario_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (CBTipoUsuario.SelectedIndex <= 0)
+            {
+                errorProvider1.SetError(CBTipoUsuario, "Debe seleccionar un tipo de usuario");
+            }
+            else
+            {
+                errorProvider1.SetError(CBTipoUsuario, "");
+            }
         }
     }
 }

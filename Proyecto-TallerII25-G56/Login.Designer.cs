@@ -29,6 +29,7 @@ namespace Proyecto_TallerII25_G56
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             LLogin = new Label();
             TBCorreo = new TextBox();
@@ -38,10 +39,12 @@ namespace Proyecto_TallerII25_G56
             pictureBox1 = new PictureBox();
             BCancelar = new Button();
             BLogin = new Button();
-            LOlvidoContrasena = new Label();
             pictureBox2 = new PictureBox();
+            CBMostrarContrasenia = new CheckBox();
+            errorProvider1 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // LLogin
@@ -59,15 +62,18 @@ namespace Proyecto_TallerII25_G56
             TBCorreo.Location = new Point(197, 135);
             TBCorreo.Name = "TBCorreo";
             TBCorreo.Size = new Size(183, 23);
-            TBCorreo.TabIndex = 33;
+            TBCorreo.TabIndex = 1;
+            TBCorreo.TextChanged += TBCorreo_TextChanged;
+            TBCorreo.Validating += TBCorreo_Validating;
             // 
             // TBContrasenia
             // 
             TBContrasenia.Location = new Point(197, 177);
             TBContrasenia.Name = "TBContrasenia";
             TBContrasenia.Size = new Size(183, 23);
-            TBContrasenia.TabIndex = 32;
+            TBContrasenia.TabIndex = 2;
             TBContrasenia.UseSystemPasswordChar = true;
+            TBContrasenia.TextChanged += TBContrasenia_TextChanged;
             // 
             // LContrasenia
             // 
@@ -102,8 +108,9 @@ namespace Proyecto_TallerII25_G56
             // 
             // BCancelar
             // 
-            BCancelar.BackColor = Color.DarkSalmon;
+            BCancelar.BackColor = SystemColors.ButtonShadow;
             BCancelar.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BCancelar.ForeColor = Color.SaddleBrown;
             BCancelar.ImageAlign = ContentAlignment.TopLeft;
             BCancelar.Location = new Point(39, 240);
             BCancelar.Name = "BCancelar";
@@ -112,11 +119,13 @@ namespace Proyecto_TallerII25_G56
             BCancelar.Text = "Cancelar";
             BCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BCancelar.UseVisualStyleBackColor = false;
+            BCancelar.Click += BCancelar_Click;
             // 
             // BLogin
             // 
-            BLogin.BackColor = Color.LightGreen;
+            BLogin.BackColor = SystemColors.ActiveBorder;
             BLogin.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BLogin.ForeColor = Color.DarkGreen;
             BLogin.ImageAlign = ContentAlignment.MiddleLeft;
             BLogin.Location = new Point(255, 240);
             BLogin.Name = "BLogin";
@@ -125,34 +134,40 @@ namespace Proyecto_TallerII25_G56
             BLogin.Text = "Entrar";
             BLogin.TextImageRelation = TextImageRelation.ImageBeforeText;
             BLogin.UseVisualStyleBackColor = false;
-            // 
-            // LOlvidoContrasena
-            // 
-            LOlvidoContrasena.AutoSize = true;
-            LOlvidoContrasena.Font = new Font("Arial Narrow", 14.25F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
-            LOlvidoContrasena.ForeColor = Color.RoyalBlue;
-            LOlvidoContrasena.Location = new Point(108, 308);
-            LOlvidoContrasena.Name = "LOlvidoContrasena";
-            LOlvidoContrasena.Size = new Size(178, 23);
-            LOlvidoContrasena.TabIndex = 38;
-            LOlvidoContrasena.Text = "¿Olvidó su contraseña?";
+            BLogin.Click += BLogin_Click;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(157, 346);
+            pictureBox2.Location = new Point(157, 314);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(104, 92);
             pictureBox2.TabIndex = 39;
             pictureBox2.TabStop = false;
             // 
+            // CBMostrarContrasenia
+            // 
+            CBMostrarContrasenia.AutoSize = true;
+            CBMostrarContrasenia.Location = new Point(197, 206);
+            CBMostrarContrasenia.Name = "CBMostrarContrasenia";
+            CBMostrarContrasenia.Size = new Size(128, 19);
+            CBMostrarContrasenia.TabIndex = 40;
+            CBMostrarContrasenia.Text = "Mostrar contraseña";
+            CBMostrarContrasenia.UseVisualStyleBackColor = true;
+            CBMostrarContrasenia.CheckedChanged += CBMostrarContrasenia_CheckedChanged;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LavenderBlush;
             ClientSize = new Size(424, 450);
+            Controls.Add(CBMostrarContrasenia);
             Controls.Add(pictureBox2);
-            Controls.Add(LOlvidoContrasena);
             Controls.Add(BCancelar);
             Controls.Add(BLogin);
             Controls.Add(pictureBox1);
@@ -165,6 +180,7 @@ namespace Proyecto_TallerII25_G56
             Text = "Login";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -179,7 +195,8 @@ namespace Proyecto_TallerII25_G56
         private PictureBox pictureBox1;
         private Button BCancelar;
         private Button BLogin;
-        private Label LOlvidoContrasena;
         private PictureBox pictureBox2;
+        private CheckBox CBMostrarContrasenia;
+        private ErrorProvider errorProvider1;
     }
 }
