@@ -115,5 +115,10 @@ namespace Proyecto_TallerII25_G56
             historialVentas.MdiParent = this;
             historialVentas.Show();
         }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

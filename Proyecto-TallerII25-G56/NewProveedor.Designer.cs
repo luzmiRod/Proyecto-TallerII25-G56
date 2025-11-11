@@ -34,7 +34,7 @@
             BCancelar = new Button();
             LNombre = new Label();
             BAgregar = new Button();
-            CBTipoUsuario = new ComboBox();
+            CBRubro = new ComboBox();
             TBCorreo = new TextBox();
             TBNombre = new TextBox();
             LCorreo = new Label();
@@ -79,7 +79,7 @@
             BCancelar.Location = new Point(18, 385);
             BCancelar.Name = "BCancelar";
             BCancelar.Size = new Size(136, 35);
-            BCancelar.TabIndex = 48;
+            BCancelar.TabIndex = 8;
             BCancelar.Text = "Cancelar";
             BCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BCancelar.UseVisualStyleBackColor = false;
@@ -103,29 +103,29 @@
             BAgregar.Size = new Size(75, 23);
             BAgregar.TabIndex = 0;
             // 
-            // CBTipoUsuario
+            // CBRubro
             // 
-            CBTipoUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
-            CBTipoUsuario.FormattingEnabled = true;
-            CBTipoUsuario.Items.AddRange(new object[] { "Almacén", "Bebés y niños", "Bebidas", "Higiene personal", "Hogar", "Limpieza", "Salud y belleza" });
-            CBTipoUsuario.Location = new Point(176, 335);
-            CBTipoUsuario.Name = "CBTipoUsuario";
-            CBTipoUsuario.Size = new Size(183, 23);
-            CBTipoUsuario.TabIndex = 39;
+            CBRubro.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBRubro.FormattingEnabled = true;
+            CBRubro.Location = new Point(176, 335);
+            CBRubro.Name = "CBRubro";
+            CBRubro.Size = new Size(183, 23);
+            CBRubro.TabIndex = 6;
             // 
             // TBCorreo
             // 
             TBCorreo.Location = new Point(176, 216);
             TBCorreo.Name = "TBCorreo";
             TBCorreo.Size = new Size(183, 23);
-            TBCorreo.TabIndex = 44;
+            TBCorreo.TabIndex = 3;
             // 
             // TBNombre
             // 
             TBNombre.Location = new Point(176, 133);
             TBNombre.Name = "TBNombre";
             TBNombre.Size = new Size(183, 23);
-            TBNombre.TabIndex = 38;
+            TBNombre.TabIndex = 1;
+            TBNombre.KeyPress += TBNombre_KeyPress;
             // 
             // LCorreo
             // 
@@ -154,7 +154,9 @@
             TBTelefono.Location = new Point(176, 254);
             TBTelefono.Name = "TBTelefono";
             TBTelefono.Size = new Size(183, 23);
-            TBTelefono.TabIndex = 53;
+            TBTelefono.TabIndex = 4;
+            TBTelefono.TextChanged += TBTelefono_TextChanged;
+            TBTelefono.KeyPress += TBTelefono_KeyPress;
             // 
             // LTelefono
             // 
@@ -172,7 +174,7 @@
             TBDireccion.Location = new Point(176, 292);
             TBDireccion.Name = "TBDireccion";
             TBDireccion.Size = new Size(183, 23);
-            TBDireccion.TabIndex = 55;
+            TBDireccion.TabIndex = 5;
             // 
             // LDireccion
             // 
@@ -190,7 +192,8 @@
             TBCuilCuit.Location = new Point(176, 177);
             TBCuilCuit.Name = "TBCuilCuit";
             TBCuilCuit.Size = new Size(183, 23);
-            TBCuilCuit.TabIndex = 56;
+            TBCuilCuit.TabIndex = 2;
+            TBCuilCuit.KeyPress += TBCuilCuit_KeyPress;
             // 
             // LRubro
             // 
@@ -212,10 +215,11 @@
             BGuardar.Location = new Point(234, 385);
             BGuardar.Name = "BGuardar";
             BGuardar.Size = new Size(125, 35);
-            BGuardar.TabIndex = 58;
+            BGuardar.TabIndex = 7;
             BGuardar.Text = "Guardar";
             BGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BGuardar.UseVisualStyleBackColor = false;
+            BGuardar.Click += BGuardar_Click;
             // 
             // LNuevoProveedor
             // 
@@ -243,7 +247,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(BCancelar);
-            Controls.Add(CBTipoUsuario);
+            Controls.Add(CBRubro);
             Controls.Add(TBCorreo);
             Controls.Add(TBNombre);
             Controls.Add(LCorreo);
@@ -265,7 +269,7 @@
         private Button BCancelar;
         private Label LNuevoProveedor;
         private Button BAgregar;
-        private ComboBox CBTipoUsuario;
+        private ComboBox CBRubro;
         private Label LTipoUsuario;
         private TextBox TBCorreo;
         private Label LDNI;

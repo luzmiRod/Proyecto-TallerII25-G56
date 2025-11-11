@@ -39,7 +39,6 @@ namespace Proyecto_TallerII25_G56
             pictureBox1 = new PictureBox();
             BCancelar = new Button();
             BLogin = new Button();
-            LOlvidoContrasena = new Label();
             pictureBox2 = new PictureBox();
             CBMostrarContrasenia = new CheckBox();
             errorProvider1 = new ErrorProvider(components);
@@ -137,21 +136,10 @@ namespace Proyecto_TallerII25_G56
             BLogin.UseVisualStyleBackColor = false;
             BLogin.Click += BLogin_Click;
             // 
-            // LOlvidoContrasena
-            // 
-            LOlvidoContrasena.AutoSize = true;
-            LOlvidoContrasena.Font = new Font("Arial Narrow", 14.25F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
-            LOlvidoContrasena.ForeColor = Color.RoyalBlue;
-            LOlvidoContrasena.Location = new Point(108, 308);
-            LOlvidoContrasena.Name = "LOlvidoContrasena";
-            LOlvidoContrasena.Size = new Size(178, 23);
-            LOlvidoContrasena.TabIndex = 38;
-            LOlvidoContrasena.Text = "¿Olvidó su contraseña?";
-            // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(157, 346);
+            pictureBox2.Location = new Point(157, 314);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(104, 92);
             pictureBox2.TabIndex = 39;
@@ -180,7 +168,6 @@ namespace Proyecto_TallerII25_G56
             ClientSize = new Size(424, 450);
             Controls.Add(CBMostrarContrasenia);
             Controls.Add(pictureBox2);
-            Controls.Add(LOlvidoContrasena);
             Controls.Add(BCancelar);
             Controls.Add(BLogin);
             Controls.Add(pictureBox1);
@@ -208,7 +195,6 @@ namespace Proyecto_TallerII25_G56
         private PictureBox pictureBox1;
         private Button BCancelar;
         private Button BLogin;
-        private Label LOlvidoContrasena;
         private PictureBox pictureBox2;
         private CheckBox CBMostrarContrasenia;
         private ErrorProvider errorProvider1;

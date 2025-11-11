@@ -29,59 +29,59 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            CBFiltroUsuario = new ComboBox();
+            CBFiltroRubro = new ComboBox();
             LFiltroRubro = new Label();
-            comboBox1 = new ComboBox();
-            LFiltroProveedor = new Label();
+            CBFiltroStock = new ComboBox();
+            LFiltroStock = new Label();
             dgvProductos = new DataGridView();
-            id_producto = new DataGridViewTextBoxColumn();
+            cod_prod = new DataGridViewTextBoxColumn();
             nombre = new DataGridViewTextBoxColumn();
             descripcion = new DataGridViewTextBoxColumn();
-            cod_rubro = new DataGridViewTextBoxColumn();
-            cod_proveedor = new DataGridViewTextBoxColumn();
+            rubro = new DataGridViewTextBoxColumn();
+            proveedor = new DataGridViewTextBoxColumn();
+            cantidad = new DataGridViewTextBoxColumn();
             precio = new DataGridViewTextBoxColumn();
+            BAgregarProducto = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
             SuspendLayout();
             // 
-            // CBFiltroUsuario
+            // CBFiltroRubro
             // 
-            CBFiltroUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
-            CBFiltroUsuario.FormattingEnabled = true;
-            CBFiltroUsuario.Items.AddRange(new object[] { "Almacén", "Bebés y niños", "Bebidas", "Higiene personal", "Hogar", "Limpieza", "Salud y belleza" });
-            CBFiltroUsuario.Location = new Point(193, 119);
-            CBFiltroUsuario.Name = "CBFiltroUsuario";
-            CBFiltroUsuario.Size = new Size(121, 23);
-            CBFiltroUsuario.TabIndex = 5;
+            CBFiltroRubro.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBFiltroRubro.FormattingEnabled = true;
+            CBFiltroRubro.Location = new Point(137, 68);
+            CBFiltroRubro.Name = "CBFiltroRubro";
+            CBFiltroRubro.Size = new Size(121, 23);
+            CBFiltroRubro.TabIndex = 5;
             // 
             // LFiltroRubro
             // 
             LFiltroRubro.AutoSize = true;
             LFiltroRubro.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LFiltroRubro.Location = new Point(68, 119);
+            LFiltroRubro.Location = new Point(12, 68);
             LFiltroRubro.Name = "LFiltroRubro";
             LFiltroRubro.Size = new Size(119, 18);
             LFiltroRubro.TabIndex = 4;
             LFiltroRubro.Text = "Filtrar por rubro:";
             // 
-            // comboBox1
+            // CBFiltroStock
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Jufec S.A.", "Maxicuera", "Distribuidora Pack", "ChipiCoorp", "Maaths Dist S.R.L", "Calisa Ctes" });
-            comboBox1.Location = new Point(492, 119);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 7;
+            CBFiltroStock.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBFiltroStock.FormattingEnabled = true;
+            CBFiltroStock.Location = new Point(411, 68);
+            CBFiltroStock.Name = "CBFiltroStock";
+            CBFiltroStock.Size = new Size(121, 23);
+            CBFiltroStock.TabIndex = 7;
             // 
-            // LFiltroProveedor
+            // LFiltroStock
             // 
-            LFiltroProveedor.AutoSize = true;
-            LFiltroProveedor.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LFiltroProveedor.Location = new Point(332, 119);
-            LFiltroProveedor.Name = "LFiltroProveedor";
-            LFiltroProveedor.Size = new Size(154, 18);
-            LFiltroProveedor.TabIndex = 6;
-            LFiltroProveedor.Text = "Filtrar por proveedor:";
+            LFiltroStock.AutoSize = true;
+            LFiltroStock.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LFiltroStock.Location = new Point(276, 68);
+            LFiltroStock.Name = "LFiltroStock";
+            LFiltroStock.Size = new Size(120, 18);
+            LFiltroStock.TabIndex = 6;
+            LFiltroStock.Text = "Filtrar por stock:";
             // 
             // dgvProductos
             // 
@@ -98,21 +98,21 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProductos.Columns.AddRange(new DataGridViewColumn[] { id_producto, nombre, descripcion, cod_rubro, cod_proveedor, precio });
-            dgvProductos.Location = new Point(68, 162);
+            dgvProductos.Columns.AddRange(new DataGridViewColumn[] { cod_prod, nombre, descripcion, rubro, proveedor, cantidad, precio });
+            dgvProductos.Location = new Point(12, 148);
             dgvProductos.Name = "dgvProductos";
             dgvProductos.RowHeadersVisible = false;
             dgvProductos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             dgvProductos.RowTemplate.Height = 10;
             dgvProductos.ShowEditingIcon = false;
-            dgvProductos.Size = new Size(691, 176);
+            dgvProductos.Size = new Size(897, 176);
             dgvProductos.TabIndex = 8;
             // 
-            // id_producto
+            // cod_prod
             // 
-            id_producto.HeaderText = "Cód producto";
-            id_producto.Name = "id_producto";
-            id_producto.Width = 128;
+            cod_prod.HeaderText = "Cód producto";
+            cod_prod.Name = "cod_prod";
+            cod_prod.Width = 128;
             // 
             // nombre
             // 
@@ -126,17 +126,23 @@
             descripcion.Name = "descripcion";
             descripcion.Width = 126;
             // 
-            // cod_rubro
+            // rubro
             // 
-            cod_rubro.HeaderText = "Rubro";
-            cod_rubro.Name = "cod_rubro";
-            cod_rubro.Width = 82;
+            rubro.HeaderText = "Rubro";
+            rubro.Name = "rubro";
+            rubro.Width = 82;
             // 
-            // cod_proveedor
+            // proveedor
             // 
-            cod_proveedor.HeaderText = "Proveedor";
-            cod_proveedor.Name = "cod_proveedor";
-            cod_proveedor.Width = 114;
+            proveedor.HeaderText = "Proveedor";
+            proveedor.Name = "proveedor";
+            proveedor.Width = 114;
+            // 
+            // cantidad
+            // 
+            cantidad.HeaderText = "Cantidad disponible";
+            cantidad.Name = "cantidad";
+            cantidad.Width = 170;
             // 
             // precio
             // 
@@ -144,15 +150,31 @@
             precio.Name = "precio";
             precio.Width = 83;
             // 
+            // BAgregarProducto
+            // 
+            BAgregarProducto.BackColor = SystemColors.ActiveBorder;
+            BAgregarProducto.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BAgregarProducto.ForeColor = Color.DarkGreen;
+            BAgregarProducto.ImageAlign = ContentAlignment.MiddleLeft;
+            BAgregarProducto.Location = new Point(567, 68);
+            BAgregarProducto.Name = "BAgregarProducto";
+            BAgregarProducto.Size = new Size(206, 24);
+            BAgregarProducto.TabIndex = 10;
+            BAgregarProducto.Text = "Agregar nuevo producto";
+            BAgregarProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BAgregarProducto.UseVisualStyleBackColor = false;
+            BAgregarProducto.Click += BAgregarProducto_Click;
+            // 
             // ProductsList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(921, 450);
+            Controls.Add(BAgregarProducto);
             Controls.Add(dgvProductos);
-            Controls.Add(comboBox1);
-            Controls.Add(LFiltroProveedor);
-            Controls.Add(CBFiltroUsuario);
+            Controls.Add(CBFiltroStock);
+            Controls.Add(LFiltroStock);
+            Controls.Add(CBFiltroRubro);
             Controls.Add(LFiltroRubro);
             Name = "ProductsList";
             Text = "Lista de productos";
@@ -164,16 +186,18 @@
 
         #endregion
 
-        private ComboBox CBFiltroUsuario;
+        private ComboBox CBFiltroRubro;
         private Label LFiltroRubro;
-        private ComboBox comboBox1;
-        private Label LFiltroProveedor;
+        private ComboBox CBFiltroStock;
+        private Label LFiltroStock;
         private DataGridView dgvProductos;
-        private DataGridViewTextBoxColumn id_producto;
+        private DataGridViewTextBoxColumn cod_prod;
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn descripcion;
-        private DataGridViewTextBoxColumn cod_rubro;
-        private DataGridViewTextBoxColumn cod_proveedor;
+        private DataGridViewTextBoxColumn rubro;
+        private DataGridViewTextBoxColumn proveedor;
+        private DataGridViewTextBoxColumn cantidad;
         private DataGridViewTextBoxColumn precio;
+        private Button BAgregarProducto;
     }
 }

@@ -13,8 +13,9 @@ namespace Proyecto_TallerII25_G56
             ApplicationConfiguration.Initialize();
             //Application.Run(new UsersList());
             //Application.Run(new UserPanel());
-            Application.Run(new RegistrarVenta());
-            //Application.Run(new ProveedoresList());
+            //Application.Run(new NewProveedor());
+            //Application.Run(new ProductsList());
+            Application.Run(new Login());
         }
     }
 }

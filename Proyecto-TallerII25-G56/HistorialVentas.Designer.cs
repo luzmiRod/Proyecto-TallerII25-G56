@@ -31,37 +31,37 @@
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistorialVentas));
-            CBFiltroUsuario = new ComboBox();
-            LFiltroMes = new Label();
+            CBFiltroCajero = new ComboBox();
+            LFiltroCajero = new Label();
             dgvHistorialVentas = new DataGridView();
             id_venta = new DataGridViewTextBoxColumn();
             fecha = new DataGridViewTextBoxColumn();
             cajero = new DataGridViewTextBoxColumn();
             monto_total = new DataGridViewTextBoxColumn();
-            detalle_venta = new DataGridViewImageColumn();
+            btnDescargar = new DataGridViewButtonColumn();
             imageList1 = new ImageList(components);
             ((System.ComponentModel.ISupportInitialize)dgvHistorialVentas).BeginInit();
             SuspendLayout();
             // 
-            // CBFiltroUsuario
+            // CBFiltroCajero
             // 
-            CBFiltroUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
-            CBFiltroUsuario.FormattingEnabled = true;
-            CBFiltroUsuario.Items.AddRange(new object[] { "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" });
-            CBFiltroUsuario.Location = new Point(170, 52);
-            CBFiltroUsuario.Name = "CBFiltroUsuario";
-            CBFiltroUsuario.Size = new Size(121, 23);
-            CBFiltroUsuario.TabIndex = 8;
+            CBFiltroCajero.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBFiltroCajero.FormattingEnabled = true;
+            CBFiltroCajero.Location = new Point(177, 52);
+            CBFiltroCajero.Name = "CBFiltroCajero";
+            CBFiltroCajero.Size = new Size(121, 23);
+            CBFiltroCajero.TabIndex = 8;
+            CBFiltroCajero.SelectedIndexChanged += CBFiltroCajero_SelectedIndexChanged;
             // 
-            // LFiltroMes
+            // LFiltroCajero
             // 
-            LFiltroMes.AutoSize = true;
-            LFiltroMes.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LFiltroMes.Location = new Point(45, 52);
-            LFiltroMes.Name = "LFiltroMes";
-            LFiltroMes.Size = new Size(113, 18);
-            LFiltroMes.TabIndex = 7;
-            LFiltroMes.Text = "Filtrar por mes:";
+            LFiltroCajero.AutoSize = true;
+            LFiltroCajero.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LFiltroCajero.Location = new Point(45, 52);
+            LFiltroCajero.Name = "LFiltroCajero";
+            LFiltroCajero.Size = new Size(126, 18);
+            LFiltroCajero.TabIndex = 7;
+            LFiltroCajero.Text = "Filtrar por cajero:";
             // 
             // dgvHistorialVentas
             // 
@@ -78,7 +78,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvHistorialVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvHistorialVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHistorialVentas.Columns.AddRange(new DataGridViewColumn[] { id_venta, fecha, cajero, monto_total, detalle_venta });
+            dgvHistorialVentas.Columns.AddRange(new DataGridViewColumn[] { id_venta, fecha, cajero, monto_total, btnDescargar });
             dgvHistorialVentas.Location = new Point(45, 89);
             dgvHistorialVentas.Name = "dgvHistorialVentas";
             dgvHistorialVentas.ReadOnly = true;
@@ -88,6 +88,7 @@
             dgvHistorialVentas.ShowEditingIcon = false;
             dgvHistorialVentas.Size = new Size(577, 176);
             dgvHistorialVentas.TabIndex = 6;
+            dgvHistorialVentas.CellContentClick += dgvHistorialVentas_CellContentClick;
             // 
             // id_venta
             // 
@@ -117,14 +118,14 @@
             monto_total.ReadOnly = true;
             monto_total.Width = 92;
             // 
-            // detalle_venta
+            // btnDescargar
             // 
-            detalle_venta.HeaderText = "Comprobante";
-            detalle_venta.Name = "detalle_venta";
-            detalle_venta.ReadOnly = true;
-            detalle_venta.Resizable = DataGridViewTriState.True;
-            detalle_venta.SortMode = DataGridViewColumnSortMode.Automatic;
-            detalle_venta.Width = 139;
+            btnDescargar.HeaderText = "Comprobante";
+            btnDescargar.Name = "btnDescargar";
+            btnDescargar.ReadOnly = true;
+            btnDescargar.Text = "Descargar";
+            btnDescargar.UseColumnTextForButtonValue = true;
+            btnDescargar.Width = 120;
             // 
             // imageList1
             // 
@@ -138,8 +139,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(CBFiltroUsuario);
-            Controls.Add(LFiltroMes);
+            Controls.Add(CBFiltroCajero);
+            Controls.Add(LFiltroCajero);
             Controls.Add(dgvHistorialVentas);
             Name = "HistorialVentas";
             Text = "Historial de ventas";
@@ -151,14 +152,14 @@
 
         #endregion
 
-        private ComboBox CBFiltroUsuario;
-        private Label LFiltroMes;
+        private ComboBox CBFiltroCajero;
+        private Label LFiltroCajero;
         private DataGridView dgvHistorialVentas;
+        private ImageList imageList1;
         private DataGridViewTextBoxColumn id_venta;
         private DataGridViewTextBoxColumn fecha;
         private DataGridViewTextBoxColumn cajero;
         private DataGridViewTextBoxColumn monto_total;
-        private DataGridViewImageColumn detalle_venta;
-        private ImageList imageList1;
+        private DataGridViewButtonColumn btnDescargar;
     }
 }

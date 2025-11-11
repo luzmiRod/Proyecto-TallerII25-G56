@@ -14,7 +14,8 @@ namespace Proyecto_TallerII25_G56
 {
     public partial class NewClient : Form
     {
-
+        public string CuitClienteRegistrado { get; private set; }
+        public string NombreClienteRegistrado { get; private set; }
         public class ConexionBD
         {
             private readonly string connetionString = @"Server=DESKTOP-JVILLBE\SQLEXPRESS;Database=Proyecto-Taller2-Grupo56;Integrated Security=True;TrustServerCertificate=True;";
@@ -83,21 +84,28 @@ namespace Proyecto_TallerII25_G56
                 try
                 {
                     sqlConnection.Open();
-                    string query = "INSERT INTO Cliente (nombre, apellido," +
-                        "dni, telefono, email, direccion)" +
-                        "VALUES (@nombre, @apellido, @dni, @telefono, @email, @direccion)";
+                    string query = "INSERT INTO Cliente (nombre, " +
+                        "cuit, telefono, email, direccion)" +
+                        "VALUES (@nombre, @cuit, @telefono, @email, @direccion)";
                     using (SqlCommand sqlCommand = new SqlCommand(query, sqlConnection))
                     {
                         sqlCommand.Parameters.AddWithValue("@nombre", TBNombre.Text);
-                        sqlCommand.Parameters.AddWithValue("@apellido", TBApellido.Text);
-                        sqlCommand.Parameters.AddWithValue("@dni", TBDNI.Text);
+                        sqlCommand.Parameters.AddWithValue("@cuit", TBCuit.Text);
                         sqlCommand.Parameters.AddWithValue("@telefono", TBTelefono.Text);
                         sqlCommand.Parameters.AddWithValue("@email", TBCorreo.Text);
                         sqlCommand.Parameters.AddWithValue("@direccion", TBDireccion.Text);
                         int rowsAffected = sqlCommand.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Cliente agregado exitosamente.");
+                            MessageBox.Show("El cliente se guardó correctamente", "¡Hecho!",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // 2. Almacenar los datos en la propiedad antes de cerrar.
+                            this.CuitClienteRegistrado = TBCuit.Text.Trim();
+                            this.NombreClienteRegistrado = TBNombre.Text.Trim(); // O el nombre completo si es una concatenación
+
+                            // 3. Establecer el DialogResult
+                            this.DialogResult = DialogResult.OK;
                             this.Close();
                         }
                         else
@@ -111,6 +119,16 @@ namespace Proyecto_TallerII25_G56
                     MessageBox.Show("Error al conectar con la base de datos: " + ex.Message);
                 }
             }
+        }
+
+        private void TBDireccion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LDNI_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

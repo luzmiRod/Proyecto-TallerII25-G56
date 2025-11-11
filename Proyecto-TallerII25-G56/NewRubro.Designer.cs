@@ -35,9 +35,7 @@
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             BCancelar = new Button();
-            TBDescrip = new TextBox();
             TBNombre = new TextBox();
-            LDescrip = new Label();
             LNombre = new Label();
             LCodigo = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -60,25 +58,27 @@
             BGuardar.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BGuardar.ForeColor = Color.DarkGreen;
             BGuardar.ImageAlign = ContentAlignment.MiddleLeft;
-            BGuardar.Location = new Point(227, 262);
+            BGuardar.Location = new Point(228, 217);
             BGuardar.Name = "BGuardar";
             BGuardar.Size = new Size(125, 35);
-            BGuardar.TabIndex = 75;
+            BGuardar.TabIndex = 3;
             BGuardar.Text = "Guardar";
             BGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BGuardar.UseVisualStyleBackColor = false;
+            BGuardar.Click += BGuardar_Click;
             // 
             // TBCodigo
             // 
             TBCodigo.Location = new Point(169, 177);
             TBCodigo.Name = "TBCodigo";
             TBCodigo.Size = new Size(183, 23);
-            TBCodigo.TabIndex = 73;
+            TBCodigo.TabIndex = 2;
+            TBCodigo.KeyPress += TBCodigo_KeyPress;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(139, 303);
+            pictureBox2.Location = new Point(140, 258);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(104, 92);
             pictureBox2.TabIndex = 68;
@@ -100,39 +100,23 @@
             BCancelar.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BCancelar.ForeColor = Color.SaddleBrown;
             BCancelar.ImageAlign = ContentAlignment.TopLeft;
-            BCancelar.Location = new Point(11, 262);
+            BCancelar.Location = new Point(12, 217);
             BCancelar.Name = "BCancelar";
             BCancelar.Size = new Size(136, 35);
-            BCancelar.TabIndex = 66;
+            BCancelar.TabIndex = 4;
             BCancelar.Text = "Cancelar";
             BCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BCancelar.UseVisualStyleBackColor = false;
             BCancelar.Click += BCancelar_Click;
-            // 
-            // TBDescrip
-            // 
-            TBDescrip.Location = new Point(169, 216);
-            TBDescrip.Name = "TBDescrip";
-            TBDescrip.Size = new Size(183, 23);
-            TBDescrip.TabIndex = 65;
             // 
             // TBNombre
             // 
             TBNombre.Location = new Point(169, 133);
             TBNombre.Name = "TBNombre";
             TBNombre.Size = new Size(183, 23);
-            TBNombre.TabIndex = 63;
-            // 
-            // LDescrip
-            // 
-            LDescrip.AutoSize = true;
-            LDescrip.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LDescrip.ForeColor = SystemColors.ActiveCaptionText;
-            LDescrip.Location = new Point(12, 211);
-            LDescrip.Name = "LDescrip";
-            LDescrip.Size = new Size(120, 25);
-            LDescrip.TabIndex = 62;
-            LDescrip.Text = "Descripción:";
+            TBNombre.TabIndex = 1;
+            TBNombre.TextChanged += TBNombre_TextChanged;
+            TBNombre.KeyPress += TBNombre_KeyPress;
             // 
             // LNombre
             // 
@@ -160,16 +144,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(376, 407);
+            ClientSize = new Size(376, 359);
             Controls.Add(LNuevoRubro);
             Controls.Add(BGuardar);
             Controls.Add(TBCodigo);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(BCancelar);
-            Controls.Add(TBDescrip);
             Controls.Add(TBNombre);
-            Controls.Add(LDescrip);
             Controls.Add(LNombre);
             Controls.Add(LCodigo);
             Name = "NewRubro";
@@ -188,9 +170,7 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private Button BCancelar;
-        private TextBox TBDescrip;
         private TextBox TBNombre;
-        private Label LDescrip;
         private Label LNombre;
         private Label LCodigo;
     }

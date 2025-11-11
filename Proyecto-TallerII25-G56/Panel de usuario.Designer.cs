@@ -71,6 +71,7 @@ namespace Proyecto_TallerII25_G56
             menuStrip.Size = new Size(737, 27);
             menuStrip.TabIndex = 0;
             menuStrip.Text = "MenuStrip";
+            menuStrip.ItemClicked += menuStrip_ItemClicked;
             // 
             // adminMenu
             // 

@@ -129,7 +129,7 @@
   <metadata name="monto_total.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="detalle_venta.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="btnDescargar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -140,7 +140,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAA0gQAAAJNU0Z0AUkBTAMBAQAB
-        CAEAAQgBAAEQAQABEAEABP8BIQEACP8BQgFNATYHAAE2AwABKAMAAUADAAEQAwABAQEAASAGAAEQGgAB
+        OAEAATgBAAEQAQABEAEABP8BIQEACP8BQgFNATYHAAE2AwABKAMAAUADAAEQAwABAQEAASAGAAEQGgAB
         fAFSAS0B/ywAAXwBUgEtAf/MAAF8AVIBLQH/LAABfAFSAS0B/8wAAXwBUgEtAf8EAAF8AVIBLQH/AXwB
         UgEtAf8BfAFSAS0B/wF8AVIBLQH/AXwBUgEtAf8BfAFSAS0B/wF8AVIBLQH/AXwBUgEtAf8BfAFSAS0B
         /wQAAXwBUgEtAf/MAAF8AVIBLQH/BAABfAFSAS0B/wwAAXwBUgEtAf8B+gHoAc4B/wH6AegBzgH/AfoB

@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EliminarProducto));
             pictureBox1 = new PictureBox();
             LEliminarProducto = new Label();
-            BAgregarProducto = new Button();
-            TBCodigo = new TextBox();
-            TBNombre = new TextBox();
+            BEliminarProducto = new Button();
+            TBCodigoEliminar = new TextBox();
+            TBCantidadEliminar = new TextBox();
             LCantidad = new Label();
             LCodProducto = new Label();
             BCancelar = new Button();
@@ -59,35 +59,36 @@
             LEliminarProducto.TabIndex = 1;
             LEliminarProducto.Text = "Eliminar producto";
             // 
-            // BAgregarProducto
+            // BEliminarProducto
             // 
-            BAgregarProducto.BackColor = SystemColors.Control;
-            BAgregarProducto.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BAgregarProducto.ForeColor = Color.Firebrick;
-            BAgregarProducto.ImageAlign = ContentAlignment.MiddleLeft;
-            BAgregarProducto.Location = new Point(352, 105);
-            BAgregarProducto.Name = "BAgregarProducto";
-            BAgregarProducto.Size = new Size(89, 25);
-            BAgregarProducto.TabIndex = 95;
-            BAgregarProducto.Text = "Eliminar";
-            BAgregarProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
-            BAgregarProducto.UseVisualStyleBackColor = false;
+            BEliminarProducto.BackColor = SystemColors.Control;
+            BEliminarProducto.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BEliminarProducto.ForeColor = Color.Firebrick;
+            BEliminarProducto.ImageAlign = ContentAlignment.MiddleLeft;
+            BEliminarProducto.Location = new Point(352, 105);
+            BEliminarProducto.Name = "BEliminarProducto";
+            BEliminarProducto.Size = new Size(89, 25);
+            BEliminarProducto.TabIndex = 3;
+            BEliminarProducto.Text = "Eliminar";
+            BEliminarProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BEliminarProducto.UseVisualStyleBackColor = false;
+            BEliminarProducto.Click += BEliminarProducto_Click;
             // 
-            // TBCodigo
+            // TBCodigoEliminar
             // 
-            TBCodigo.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TBCodigo.Location = new Point(120, 72);
-            TBCodigo.Name = "TBCodigo";
-            TBCodigo.Size = new Size(183, 17);
-            TBCodigo.TabIndex = 91;
+            TBCodigoEliminar.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBCodigoEliminar.Location = new Point(120, 72);
+            TBCodigoEliminar.Name = "TBCodigoEliminar";
+            TBCodigoEliminar.Size = new Size(183, 17);
+            TBCodigoEliminar.TabIndex = 1;
             // 
-            // TBNombre
+            // TBCantidadEliminar
             // 
-            TBNombre.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TBNombre.Location = new Point(383, 72);
-            TBNombre.Name = "TBNombre";
-            TBNombre.Size = new Size(56, 17);
-            TBNombre.TabIndex = 94;
+            TBCantidadEliminar.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBCantidadEliminar.Location = new Point(383, 72);
+            TBCantidadEliminar.Name = "TBCantidadEliminar";
+            TBCantidadEliminar.Size = new Size(56, 17);
+            TBCantidadEliminar.TabIndex = 2;
             // 
             // LCantidad
             // 
@@ -120,7 +121,7 @@
             BCancelar.Location = new Point(257, 105);
             BCancelar.Name = "BCancelar";
             BCancelar.Size = new Size(89, 25);
-            BCancelar.TabIndex = 96;
+            BCancelar.TabIndex = 4;
             BCancelar.Text = "Cancelar";
             BCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BCancelar.UseVisualStyleBackColor = false;
@@ -132,9 +133,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(465, 143);
             Controls.Add(BCancelar);
-            Controls.Add(BAgregarProducto);
-            Controls.Add(TBCodigo);
-            Controls.Add(TBNombre);
+            Controls.Add(BEliminarProducto);
+            Controls.Add(TBCodigoEliminar);
+            Controls.Add(TBCantidadEliminar);
             Controls.Add(LCantidad);
             Controls.Add(LCodProducto);
             Controls.Add(LEliminarProducto);
@@ -150,9 +151,9 @@
 
         private PictureBox pictureBox1;
         private Label LEliminarProducto;
-        private Button BAgregarProducto;
-        private TextBox TBCodigo;
-        private TextBox TBNombre;
+        private Button BEliminarProducto;
+        private TextBox TBCodigoEliminar;
+        private TextBox TBCantidadEliminar;
         private Label LCantidad;
         private Label LCodProducto;
         private Button BCancelar;

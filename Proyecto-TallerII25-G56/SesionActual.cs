@@ -2,7 +2,7 @@
 {
     public static class SesionActual
     {
-        public static int IdUsuario { get; set; }
+        public static int IdUsuario { get; set; } = 0;
         public static string Nombre { get; set; } = string.Empty;
         public static string Apellido { get; set; } = string.Empty;
         public static string Correo { get; set; } = string.Empty;

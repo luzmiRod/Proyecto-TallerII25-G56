@@ -108,7 +108,28 @@ namespace Proyecto_TallerII25_G56
                 }
                 catch (SqlException sqlEx)
                 {
-                    MessageBox.Show($"Error de SQL Server: {sqlEx.Message}\nCódigo: {sqlEx.Number}");
+                    // Código de error para violación de restricción UNIQUE (Duplicate Key)
+                    if (sqlEx.Number == 2627 || sqlEx.Number == 2601)
+                    {
+                        string mensajePersonalizado = "Error de duplicidad. ";
+
+                        // Inspeccionar el mensaje de error para determinar qué campo está duplicado
+                        if (sqlEx.Message.Contains("UQ_Usuario_Correo") || sqlEx.Message.Contains("correo"))
+                        {
+                            mensajePersonalizado += "El **correo electrónico** ya está registrado para otro usuario.";
+                        }
+                        else if (sqlEx.Message.Contains("UQ_Usuario_DNI") || sqlEx.Message.Contains("dni"))
+                        {
+                            mensajePersonalizado += "El **DNI** ya está registrado para otro usuario.";
+                        }
+                        else
+                        {
+                            mensajePersonalizado += "Ya existe un registro con un valor único duplicado.";
+                        }
+
+                        MessageBox.Show(mensajePersonalizado, "Error de Duplicidad",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -116,21 +137,6 @@ namespace Proyecto_TallerII25_G56
                 }
             }
         }
-
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-                foreach (var b in bytes)
-                {
-                    builder.Append(b.ToString("x2")); // convierte en hex
-                }
-                return builder.ToString();
-            }
-        }
-
         private void TBDNI_KeyPress(object sender, KeyPressEventArgs e)
         {
             //permite el ingreso de caracteres del tipo digit y que se pueda borrar
@@ -253,11 +259,6 @@ namespace Proyecto_TallerII25_G56
             {
                 errorProvider1.SetError(CBTipoUsuario, "");
             }
-        }
-
-        private void TBNombre_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

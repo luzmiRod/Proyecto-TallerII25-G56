@@ -39,7 +39,7 @@
             TBCantidad = new TextBox();
             LPrecio = new Label();
             TBPrecio = new TextBox();
-            TBApellido = new TextBox();
+            TBCodProducto = new TextBox();
             TBNombre = new TextBox();
             LRubro = new Label();
             LCandidad = new Label();
@@ -49,13 +49,10 @@
             CBRubro = new ComboBox();
             CBDisponible = new ComboBox();
             LDisponible = new Label();
-            LImagen = new Label();
             LDescripcion = new Label();
             TBDescripcion = new TextBox();
-            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // pictureBox2
@@ -66,7 +63,6 @@
             pictureBox2.Size = new Size(104, 92);
             pictureBox2.TabIndex = 51;
             pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
             // 
             // pictureBox1
             // 
@@ -87,7 +83,7 @@
             BCancelar.Location = new Point(21, 480);
             BCancelar.Name = "BCancelar";
             BCancelar.Size = new Size(136, 35);
-            BCancelar.TabIndex = 48;
+            BCancelar.TabIndex = 10;
             BCancelar.Text = "Cancelar";
             BCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BCancelar.UseVisualStyleBackColor = false;
@@ -102,7 +98,6 @@
             LNuevoProducto.Size = new Size(222, 33);
             LNuevoProducto.TabIndex = 47;
             LNuevoProducto.Text = "Nuevo producto";
-            LNuevoProducto.Click += LNuevoUsuario_Click;
             // 
             // BGuardar
             // 
@@ -113,21 +108,20 @@
             BGuardar.Location = new Point(478, 480);
             BGuardar.Name = "BGuardar";
             BGuardar.Size = new Size(125, 35);
-            BGuardar.TabIndex = 46;
+            BGuardar.TabIndex = 9;
             BGuardar.Text = "Guardar";
             BGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BGuardar.UseVisualStyleBackColor = false;
-            BGuardar.Click += BCancelar_Click_1;
+            BGuardar.Click += BGuardar_Click;
             // 
             // CBProveedor
             // 
             CBProveedor.DropDownStyle = ComboBoxStyle.DropDownList;
             CBProveedor.FormattingEnabled = true;
-            CBProveedor.Items.AddRange(new object[] { "Jufec S.A.", "Maxicuera", "Distribuidora Pack", "ChipiCoorp", "Maaths Dist S.R.L", "Calisa Ctes" });
             CBProveedor.Location = new Point(153, 369);
             CBProveedor.Name = "CBProveedor";
             CBProveedor.Size = new Size(199, 23);
-            CBProveedor.TabIndex = 39;
+            CBProveedor.TabIndex = 5;
             // 
             // LProveedor
             // 
@@ -145,7 +139,8 @@
             TBCantidad.Location = new Point(491, 175);
             TBCantidad.Name = "TBCantidad";
             TBCantidad.Size = new Size(107, 23);
-            TBCantidad.TabIndex = 44;
+            TBCantidad.TabIndex = 7;
+            TBCantidad.KeyPress += TBCantidad_KeyPress;
             // 
             // LPrecio
             // 
@@ -163,22 +158,23 @@
             TBPrecio.Location = new Point(491, 119);
             TBPrecio.Name = "TBPrecio";
             TBPrecio.Size = new Size(107, 23);
-            TBPrecio.TabIndex = 42;
-            TBPrecio.TextChanged += TBPrecio_TextChanged;
+            TBPrecio.TabIndex = 6;
+            TBPrecio.KeyPress += TBPrecio_KeyPress;
             // 
-            // TBApellido
+            // TBCodProducto
             // 
-            TBApellido.Location = new Point(153, 121);
-            TBApellido.Name = "TBApellido";
-            TBApellido.Size = new Size(199, 23);
-            TBApellido.TabIndex = 1;
+            TBCodProducto.Location = new Point(153, 121);
+            TBCodProducto.Name = "TBCodProducto";
+            TBCodProducto.Size = new Size(199, 23);
+            TBCodProducto.TabIndex = 1;
+            TBCodProducto.KeyPress += TBCodProducto_KeyPress;
             // 
             // TBNombre
             // 
             TBNombre.Location = new Point(153, 175);
             TBNombre.Name = "TBNombre";
             TBNombre.Size = new Size(199, 23);
-            TBNombre.TabIndex = 38;
+            TBNombre.TabIndex = 2;
             // 
             // LRubro
             // 
@@ -233,17 +229,17 @@
             label1.Name = "label1";
             label1.Size = new Size(156, 16);
             label1.TabIndex = 52;
-            label1.Text = "Código numérico único del producto";
+            label1.Text = "Código único numérico del producto";
             // 
             // CBRubro
             // 
             CBRubro.DropDownStyle = ComboBoxStyle.DropDownList;
             CBRubro.FormattingEnabled = true;
-            CBRubro.Items.AddRange(new object[] { "Almacén", "Bebés y niños", "Bebidas", "Higiene personal", "Hogar", "Limpieza", "Salud y belleza" });
             CBRubro.Location = new Point(153, 326);
             CBRubro.Name = "CBRubro";
             CBRubro.Size = new Size(199, 23);
-            CBRubro.TabIndex = 53;
+            CBRubro.TabIndex = 4;
+            CBRubro.SelectedIndexChanged += CBRubro_SelectedIndexChanged;
             // 
             // CBDisponible
             // 
@@ -253,7 +249,7 @@
             CBDisponible.Location = new Point(491, 228);
             CBDisponible.Name = "CBDisponible";
             CBDisponible.Size = new Size(107, 23);
-            CBDisponible.TabIndex = 54;
+            CBDisponible.TabIndex = 8;
             // 
             // LDisponible
             // 
@@ -265,17 +261,6 @@
             LDisponible.Size = new Size(109, 25);
             LDisponible.TabIndex = 55;
             LDisponible.Text = "Disponible:";
-            // 
-            // LImagen
-            // 
-            LImagen.AutoSize = true;
-            LImagen.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LImagen.ForeColor = SystemColors.ActiveCaptionText;
-            LImagen.Location = new Point(376, 281);
-            LImagen.Name = "LImagen";
-            LImagen.Size = new Size(80, 25);
-            LImagen.TabIndex = 56;
-            LImagen.Text = "Imagen:";
             // 
             // LDescripcion
             // 
@@ -294,26 +279,15 @@
             TBDescripcion.Multiline = true;
             TBDescripcion.Name = "TBDescripcion";
             TBDescripcion.Size = new Size(199, 86);
-            TBDescripcion.TabIndex = 59;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(497, 281);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(106, 111);
-            pictureBox3.TabIndex = 60;
-            pictureBox3.TabStop = false;
+            TBDescripcion.TabIndex = 3;
             // 
             // NewProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(626, 520);
-            Controls.Add(pictureBox3);
             Controls.Add(TBDescripcion);
             Controls.Add(LDescripcion);
-            Controls.Add(LImagen);
             Controls.Add(LDisponible);
             Controls.Add(CBDisponible);
             Controls.Add(CBRubro);
@@ -328,7 +302,7 @@
             Controls.Add(TBCantidad);
             Controls.Add(LPrecio);
             Controls.Add(TBPrecio);
-            Controls.Add(TBApellido);
+            Controls.Add(TBCodProducto);
             Controls.Add(TBNombre);
             Controls.Add(LRubro);
             Controls.Add(LCandidad);
@@ -338,7 +312,6 @@
             Text = "Nuevo producto";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -357,7 +330,7 @@
         private Label LPrecio;
         private TextBox TBPrecio;
         private TextBox TBContrasenia;
-        private TextBox TBApellido;
+        private TextBox TBCodProducto;
         private TextBox TBNombre;
         private Label LRubro;
         private Label LCandidad;
@@ -367,9 +340,7 @@
         private ComboBox CBRubro;
         private ComboBox CBDisponible;
         private Label LDisponible;
-        private Label LImagen;
         private Label LDescripcion;
         private TextBox TBDescripcion;
-        private PictureBox pictureBox3;
     }
 }

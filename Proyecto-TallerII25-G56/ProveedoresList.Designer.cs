@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            CBFiltroUsuario = new ComboBox();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            CBFiltroRubro = new ComboBox();
             LFiltroRubro = new Label();
             dgvProveedores = new DataGridView();
-            cuit_cuil = new DataGridViewTextBoxColumn();
+            cuit = new DataGridViewTextBoxColumn();
             nombre = new DataGridViewTextBoxColumn();
-            domicilio = new DataGridViewTextBoxColumn();
+            direccion = new DataGridViewTextBoxColumn();
             telefono = new DataGridViewTextBoxColumn();
-            correo = new DataGridViewTextBoxColumn();
+            email = new DataGridViewTextBoxColumn();
             rubro = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProveedores).BeginInit();
             SuspendLayout();
             // 
-            // CBFiltroUsuario
+            // CBFiltroRubro
             // 
-            CBFiltroUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
-            CBFiltroUsuario.FormattingEnabled = true;
-            CBFiltroUsuario.Items.AddRange(new object[] { "Almacén", "Bebés y niños", "Bebidas", "Higiene personal", "Hogar", "Limpieza", "Salud y belleza" });
-            CBFiltroUsuario.Location = new Point(164, 56);
-            CBFiltroUsuario.Name = "CBFiltroUsuario";
-            CBFiltroUsuario.Size = new Size(121, 23);
-            CBFiltroUsuario.TabIndex = 5;
+            CBFiltroRubro.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBFiltroRubro.FormattingEnabled = true;
+            CBFiltroRubro.Location = new Point(164, 56);
+            CBFiltroRubro.Name = "CBFiltroRubro";
+            CBFiltroRubro.Size = new Size(121, 23);
+            CBFiltroRubro.TabIndex = 5;
+            CBFiltroRubro.SelectedIndexChanged += CBFiltroRubro_SelectedIndexChanged_1;
             // 
             // LFiltroRubro
             // 
@@ -67,16 +67,16 @@
             dgvProveedores.AllowUserToDeleteRows = false;
             dgvProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvProveedores.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvProveedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProveedores.Columns.AddRange(new DataGridViewColumn[] { cuit_cuil, nombre, domicilio, telefono, correo, rubro });
+            dgvProveedores.Columns.AddRange(new DataGridViewColumn[] { cuit, nombre, direccion, telefono, email, rubro });
             dgvProveedores.Location = new Point(39, 93);
             dgvProveedores.Name = "dgvProveedores";
             dgvProveedores.ReadOnly = true;
@@ -87,12 +87,12 @@
             dgvProveedores.Size = new Size(702, 176);
             dgvProveedores.TabIndex = 3;
             // 
-            // cuit_cuil
+            // cuit
             // 
-            cuit_cuil.HeaderText = "CUIT/CUIL";
-            cuit_cuil.Name = "cuit_cuil";
-            cuit_cuil.ReadOnly = true;
-            cuit_cuil.Width = 114;
+            cuit.HeaderText = "CUIT/CUIL";
+            cuit.Name = "cuit";
+            cuit.ReadOnly = true;
+            cuit.Width = 114;
             // 
             // nombre
             // 
@@ -101,12 +101,12 @@
             nombre.ReadOnly = true;
             nombre.Width = 95;
             // 
-            // domicilio
+            // direccion
             // 
-            domicilio.HeaderText = "Domicilio";
-            domicilio.Name = "domicilio";
-            domicilio.ReadOnly = true;
-            domicilio.Width = 105;
+            direccion.HeaderText = "Domicilio";
+            direccion.Name = "direccion";
+            direccion.ReadOnly = true;
+            direccion.Width = 105;
             // 
             // telefono
             // 
@@ -114,12 +114,12 @@
             telefono.Name = "telefono";
             telefono.ReadOnly = true;
             // 
-            // correo
+            // email
             // 
-            correo.HeaderText = "Correo";
-            correo.Name = "correo";
-            correo.ReadOnly = true;
-            correo.Width = 87;
+            email.HeaderText = "Correo";
+            email.Name = "email";
+            email.ReadOnly = true;
+            email.Width = 87;
             // 
             // rubro
             // 
@@ -133,7 +133,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(CBFiltroUsuario);
+            Controls.Add(CBFiltroRubro);
             Controls.Add(LFiltroRubro);
             Controls.Add(dgvProveedores);
             Name = "ProveedoresList";
@@ -146,14 +146,14 @@
 
         #endregion
 
-        private ComboBox CBFiltroUsuario;
+        private ComboBox CBFiltroRubro;
         private Label LFiltroRubro;
         private DataGridView dgvProveedores;
-        private DataGridViewTextBoxColumn cuit_cuil;
+        private DataGridViewTextBoxColumn cuit;
         private DataGridViewTextBoxColumn nombre;
-        private DataGridViewTextBoxColumn domicilio;
+        private DataGridViewTextBoxColumn direccion;
         private DataGridViewTextBoxColumn telefono;
-        private DataGridViewTextBoxColumn correo;
+        private DataGridViewTextBoxColumn email;
         private DataGridViewTextBoxColumn rubro;
     }
 }

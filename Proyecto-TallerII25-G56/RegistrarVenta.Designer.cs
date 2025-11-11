@@ -35,21 +35,21 @@
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             BCancelar = new Button();
-            TBDescrip = new TextBox();
-            TBNombre = new TextBox();
+            TBProdAgregados = new TextBox();
+            TBCantidad = new TextBox();
             LProductosAgregados = new Label();
             LCantidad = new Label();
             LCodProducto = new Label();
-            textBox1 = new TextBox();
+            TBSubtotal = new TextBox();
             LSubtotal = new Label();
             BAgregarProducto = new Button();
-            textBox2 = new TextBox();
+            TBTotal = new TextBox();
             LTotal = new Label();
             BEliminarProducto = new Button();
-            LDniCliente = new Label();
-            TBDniCliente = new TextBox();
+            LCuitCliente = new Label();
+            TBCuitCliente = new TextBox();
             PBButtonFindCliente = new PictureBox();
-            TBNombreApellidoCliente = new TextBox();
+            TBNombreCliente = new TextBox();
             LNoClienteAun = new Label();
             BRegistrarCliente = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -80,6 +80,7 @@
             BGuardar.Text = "Guardar";
             BGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BGuardar.UseVisualStyleBackColor = false;
+            BGuardar.Click += BGuardar_Click;
             // 
             // TBCodigo
             // 
@@ -117,28 +118,28 @@
             BCancelar.Location = new Point(12, 429);
             BCancelar.Name = "BCancelar";
             BCancelar.Size = new Size(136, 35);
-            BCancelar.TabIndex = 82;
+            BCancelar.TabIndex = 6;
             BCancelar.Text = "Cancelar";
             BCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BCancelar.UseVisualStyleBackColor = false;
             BCancelar.Click += BCancelar_Click;
             // 
-            // TBDescrip
+            // TBProdAgregados
             // 
-            TBDescrip.Enabled = false;
-            TBDescrip.Location = new Point(180, 225);
-            TBDescrip.Multiline = true;
-            TBDescrip.Name = "TBDescrip";
-            TBDescrip.Size = new Size(183, 108);
-            TBDescrip.TabIndex = 81;
+            TBProdAgregados.Enabled = false;
+            TBProdAgregados.Location = new Point(180, 225);
+            TBProdAgregados.Multiline = true;
+            TBProdAgregados.Name = "TBProdAgregados";
+            TBProdAgregados.Size = new Size(183, 108);
+            TBProdAgregados.TabIndex = 81;
             // 
-            // TBNombre
+            // TBCantidad
             // 
-            TBNombre.Location = new Point(505, 173);
-            TBNombre.Name = "TBNombre";
-            TBNombre.Size = new Size(56, 23);
-            TBNombre.TabIndex = 3;
-            TBNombre.KeyPress += TBNombre_KeyPress;
+            TBCantidad.Location = new Point(505, 173);
+            TBCantidad.Name = "TBCantidad";
+            TBCantidad.Size = new Size(56, 23);
+            TBCantidad.TabIndex = 3;
+            TBCantidad.KeyPress += TBNombre_KeyPress;
             // 
             // LProductosAgregados
             // 
@@ -173,13 +174,13 @@
             LCodProducto.TabIndex = 78;
             LCodProducto.Text = "Código producto:";
             // 
-            // textBox1
+            // TBSubtotal
             // 
-            textBox1.Enabled = false;
-            textBox1.Location = new Point(505, 220);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(56, 23);
-            textBox1.TabIndex = 89;
+            TBSubtotal.Enabled = false;
+            TBSubtotal.Location = new Point(505, 220);
+            TBSubtotal.Name = "TBSubtotal";
+            TBSubtotal.Size = new Size(56, 23);
+            TBSubtotal.TabIndex = 89;
             // 
             // LSubtotal
             // 
@@ -205,14 +206,15 @@
             BAgregarProducto.Text = "+ Agregar";
             BAgregarProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
             BAgregarProducto.UseVisualStyleBackColor = false;
+            BAgregarProducto.Click += BAgregarProducto_Click;
             // 
-            // textBox2
+            // TBTotal
             // 
-            textBox2.Enabled = false;
-            textBox2.Location = new Point(505, 308);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(56, 23);
-            textBox2.TabIndex = 92;
+            TBTotal.Enabled = false;
+            TBTotal.Location = new Point(505, 308);
+            TBTotal.Name = "TBTotal";
+            TBTotal.Size = new Size(56, 23);
+            TBTotal.TabIndex = 92;
             // 
             // LTotal
             // 
@@ -241,25 +243,23 @@
             BEliminarProducto.UseVisualStyleBackColor = false;
             BEliminarProducto.Click += BEliminarProducto_Click;
             // 
-            // LDniCliente
+            // LCuitCliente
             // 
-            LDniCliente.AutoSize = true;
-            LDniCliente.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LDniCliente.ForeColor = SystemColors.ActiveCaptionText;
-            LDniCliente.Location = new Point(12, 114);
-            LDniCliente.Name = "LDniCliente";
-            LDniCliente.Size = new Size(109, 25);
-            LDniCliente.TabIndex = 94;
-            LDniCliente.Text = "DNI cliente:";
-            LDniCliente.Click += label1_Click;
+            LCuitCliente.AutoSize = true;
+            LCuitCliente.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LCuitCliente.ForeColor = SystemColors.ActiveCaptionText;
+            LCuitCliente.Location = new Point(12, 114);
+            LCuitCliente.Name = "LCuitCliente";
+            LCuitCliente.Size = new Size(165, 25);
+            LCuitCliente.TabIndex = 94;
+            LCuitCliente.Text = "CUIT/CUIL cliente:";
             // 
-            // TBDniCliente
+            // TBCuitCliente
             // 
-            TBDniCliente.Location = new Point(180, 116);
-            TBDniCliente.Name = "TBDniCliente";
-            TBDniCliente.Size = new Size(183, 23);
-            TBDniCliente.TabIndex = 1;
-            TBDniCliente.KeyPress += TBDniCliente_KeyPress;
+            TBCuitCliente.Location = new Point(180, 116);
+            TBCuitCliente.Name = "TBCuitCliente";
+            TBCuitCliente.Size = new Size(183, 23);
+            TBCuitCliente.TabIndex = 1;
             // 
             // PBButtonFindCliente
             // 
@@ -272,14 +272,13 @@
             PBButtonFindCliente.TabStop = false;
             PBButtonFindCliente.Click += PBButtonFindCliente_Click;
             // 
-            // TBNombreApellidoCliente
+            // TBNombreCliente
             // 
-            TBNombreApellidoCliente.Enabled = false;
-            TBNombreApellidoCliente.Location = new Point(405, 116);
-            TBNombreApellidoCliente.Name = "TBNombreApellidoCliente";
-            TBNombreApellidoCliente.Size = new Size(183, 23);
-            TBNombreApellidoCliente.TabIndex = 97;
-            TBNombreApellidoCliente.Click += TBNombreApellidoCliente_Click;
+            TBNombreCliente.Enabled = false;
+            TBNombreCliente.Location = new Point(405, 116);
+            TBNombreCliente.Name = "TBNombreCliente";
+            TBNombreCliente.Size = new Size(183, 23);
+            TBNombreCliente.TabIndex = 97;
             // 
             // LNoClienteAun
             // 
@@ -314,15 +313,15 @@
             ClientSize = new Size(687, 482);
             Controls.Add(BRegistrarCliente);
             Controls.Add(LNoClienteAun);
-            Controls.Add(TBNombreApellidoCliente);
+            Controls.Add(TBNombreCliente);
             Controls.Add(PBButtonFindCliente);
-            Controls.Add(TBDniCliente);
-            Controls.Add(LDniCliente);
+            Controls.Add(TBCuitCliente);
+            Controls.Add(LCuitCliente);
             Controls.Add(BEliminarProducto);
-            Controls.Add(textBox2);
+            Controls.Add(TBTotal);
             Controls.Add(LTotal);
             Controls.Add(BAgregarProducto);
-            Controls.Add(textBox1);
+            Controls.Add(TBSubtotal);
             Controls.Add(LSubtotal);
             Controls.Add(LRegistrarVenta);
             Controls.Add(BGuardar);
@@ -330,13 +329,14 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(BCancelar);
-            Controls.Add(TBDescrip);
-            Controls.Add(TBNombre);
+            Controls.Add(TBProdAgregados);
+            Controls.Add(TBCantidad);
             Controls.Add(LProductosAgregados);
             Controls.Add(LCantidad);
             Controls.Add(LCodProducto);
             Name = "RegistrarVenta";
             Text = "Registrar venta";
+            Load += RegistrarVenta_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBButtonFindCliente).EndInit();
@@ -352,21 +352,21 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private Button BCancelar;
-        private TextBox TBDescrip;
-        private TextBox TBNombre;
+        private TextBox TBProdAgregados;
+        private TextBox TBCantidad;
         private Label LProductosAgregados;
         private Label LCantidad;
         private Label LCodProducto;
-        private TextBox textBox1;
+        private TextBox TBSubtotal;
         private Label LSubtotal;
         private Button BAgregarProducto;
-        private TextBox textBox2;
+        private TextBox TBTotal;
         private Label LTotal;
         private Button BEliminarProducto;
-        private Label LDniCliente;
-        private TextBox TBDniCliente;
+        private Label LCuitCliente;
+        private TextBox TBCuitCliente;
         private PictureBox PBButtonFindCliente;
-        private TextBox TBNombreApellidoCliente;
+        private TextBox TBNombreCliente;
         private Label LNoClienteAun;
         private Button BRegistrarCliente;
     }

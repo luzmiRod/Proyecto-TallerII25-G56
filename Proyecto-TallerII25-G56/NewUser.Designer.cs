@@ -62,7 +62,7 @@
             CBTipoUsuario.Location = new Point(187, 361);
             CBTipoUsuario.Name = "CBTipoUsuario";
             CBTipoUsuario.Size = new Size(183, 23);
-            CBTipoUsuario.TabIndex = 21;
+            CBTipoUsuario.TabIndex = 6;
             CBTipoUsuario.Validating += CBTipoUsuario_Validating;
             // 
             // LTipoUsuario
@@ -81,7 +81,7 @@
             TBCorreo.Location = new Point(187, 265);
             TBCorreo.Name = "TBCorreo";
             TBCorreo.Size = new Size(183, 23);
-            TBCorreo.TabIndex = 26;
+            TBCorreo.TabIndex = 4;
             TBCorreo.Validating += TBCorreo_Validating;
             // 
             // LDNI
@@ -100,7 +100,7 @@
             TBDNI.Location = new Point(187, 218);
             TBDNI.Name = "TBDNI";
             TBDNI.Size = new Size(183, 23);
-            TBDNI.TabIndex = 24;
+            TBDNI.TabIndex = 3;
             TBDNI.KeyPress += TBDNI_KeyPress;
             TBDNI.Validating += TBDNI_Validating;
             // 
@@ -109,7 +109,7 @@
             TBContrasenia.Location = new Point(187, 307);
             TBContrasenia.Name = "TBContrasenia";
             TBContrasenia.Size = new Size(183, 23);
-            TBContrasenia.TabIndex = 22;
+            TBContrasenia.TabIndex = 5;
             TBContrasenia.UseSystemPasswordChar = true;
             TBContrasenia.Validating += TBContrasenia_Validating;
             // 
@@ -118,7 +118,7 @@
             TBApellido.Location = new Point(187, 177);
             TBApellido.Name = "TBApellido";
             TBApellido.Size = new Size(183, 23);
-            TBApellido.TabIndex = 23;
+            TBApellido.TabIndex = 2;
             TBApellido.KeyPress += TBApellido_KeyPress;
             TBApellido.Validating += TBApellido_Validating;
             // 
@@ -127,8 +127,7 @@
             TBNombre.Location = new Point(187, 133);
             TBNombre.Name = "TBNombre";
             TBNombre.Size = new Size(183, 23);
-            TBNombre.TabIndex = 20;
-            TBNombre.TextChanged += TBNombre_TextChanged;
+            TBNombre.TabIndex = 1;
             TBNombre.KeyPress += TBNombre_KeyPress;
             TBNombre.Validating += TBNombre_Validating;
             // 
@@ -185,7 +184,7 @@
             BAgregar.Location = new Point(245, 422);
             BAgregar.Name = "BAgregar";
             BAgregar.Size = new Size(125, 35);
-            BAgregar.TabIndex = 28;
+            BAgregar.TabIndex = 7;
             BAgregar.Text = "Crear usuario";
             BAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BAgregar.UseVisualStyleBackColor = false;
@@ -211,7 +210,7 @@
             BCancelar.Location = new Point(29, 422);
             BCancelar.Name = "BCancelar";
             BCancelar.Size = new Size(136, 35);
-            BCancelar.TabIndex = 30;
+            BCancelar.TabIndex = 8;
             BCancelar.Text = "Cancelar";
             BCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BCancelar.UseVisualStyleBackColor = false;

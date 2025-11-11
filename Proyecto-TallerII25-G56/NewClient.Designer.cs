@@ -35,13 +35,11 @@
             LNuevoCliente = new Label();
             BAgregar = new Button();
             TBCorreo = new TextBox();
-            LDNI = new Label();
-            TBDNI = new TextBox();
-            TBApellido = new TextBox();
+            LCuit = new Label();
+            TBCuit = new TextBox();
             TBNombre = new TextBox();
             LCorreo = new Label();
             LNombre = new Label();
-            LApellido = new Label();
             TBTelefono = new TextBox();
             LTelefono = new Label();
             TBDireccion = new TextBox();
@@ -53,7 +51,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(152, 425);
+            pictureBox2.Location = new Point(152, 374);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(104, 92);
             pictureBox2.TabIndex = 51;
@@ -75,7 +73,7 @@
             BCancelar.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BCancelar.ForeColor = Color.SaddleBrown;
             BCancelar.ImageAlign = ContentAlignment.TopLeft;
-            BCancelar.Location = new Point(24, 384);
+            BCancelar.Location = new Point(24, 333);
             BCancelar.Name = "BCancelar";
             BCancelar.Size = new Size(136, 35);
             BCancelar.TabIndex = 48;
@@ -100,7 +98,7 @@
             BAgregar.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BAgregar.ForeColor = Color.DarkGreen;
             BAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            BAgregar.Location = new Point(240, 384);
+            BAgregar.Location = new Point(240, 333);
             BAgregar.Name = "BAgregar";
             BAgregar.Size = new Size(125, 35);
             BAgregar.TabIndex = 46;
@@ -111,39 +109,32 @@
             // 
             // TBCorreo
             // 
-            TBCorreo.Location = new Point(182, 258);
+            TBCorreo.Location = new Point(182, 207);
             TBCorreo.Name = "TBCorreo";
             TBCorreo.Size = new Size(183, 23);
             TBCorreo.TabIndex = 4;
             TBCorreo.KeyPress += TBCorreo_KeyPress;
             TBCorreo.Validating += TBCorreo_Validating;
             // 
-            // LDNI
+            // LCuit
             // 
-            LDNI.AutoSize = true;
-            LDNI.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LDNI.ForeColor = SystemColors.ActiveCaptionText;
-            LDNI.Location = new Point(24, 209);
-            LDNI.Name = "LDNI";
-            LDNI.Size = new Size(47, 25);
-            LDNI.TabIndex = 43;
-            LDNI.Text = "DNI:";
+            LCuit.AutoSize = true;
+            LCuit.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LCuit.ForeColor = SystemColors.ActiveCaptionText;
+            LCuit.Location = new Point(24, 164);
+            LCuit.Name = "LCuit";
+            LCuit.Size = new Size(103, 25);
+            LCuit.TabIndex = 43;
+            LCuit.Text = "CUIT/CUIL:";
+            LCuit.Click += LDNI_Click;
             // 
-            // TBDNI
+            // TBCuit
             // 
-            TBDNI.Location = new Point(182, 211);
-            TBDNI.Name = "TBDNI";
-            TBDNI.Size = new Size(183, 23);
-            TBDNI.TabIndex = 3;
-            TBDNI.KeyPress += TBDNI_KeyPress;
-            // 
-            // TBApellido
-            // 
-            TBApellido.Location = new Point(182, 170);
-            TBApellido.Name = "TBApellido";
-            TBApellido.Size = new Size(183, 23);
-            TBApellido.TabIndex = 2;
-            TBApellido.KeyPress += TBApellido_KeyPress;
+            TBCuit.Location = new Point(182, 166);
+            TBCuit.Name = "TBCuit";
+            TBCuit.Size = new Size(183, 23);
+            TBCuit.TabIndex = 3;
+            TBCuit.KeyPress += TBDNI_KeyPress;
             // 
             // TBNombre
             // 
@@ -158,7 +149,7 @@
             LCorreo.AutoSize = true;
             LCorreo.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LCorreo.ForeColor = SystemColors.ActiveCaptionText;
-            LCorreo.Location = new Point(24, 253);
+            LCorreo.Location = new Point(24, 202);
             LCorreo.Name = "LCorreo";
             LCorreo.Size = new Size(76, 25);
             LCorreo.TabIndex = 36;
@@ -175,20 +166,9 @@
             LNombre.TabIndex = 34;
             LNombre.Text = "Nombre:";
             // 
-            // LApellido
-            // 
-            LApellido.AutoSize = true;
-            LApellido.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LApellido.ForeColor = SystemColors.ActiveCaptionText;
-            LApellido.Location = new Point(24, 165);
-            LApellido.Name = "LApellido";
-            LApellido.Size = new Size(88, 25);
-            LApellido.TabIndex = 35;
-            LApellido.Text = "Apellido:";
-            // 
             // TBTelefono
             // 
-            TBTelefono.Location = new Point(182, 303);
+            TBTelefono.Location = new Point(182, 252);
             TBTelefono.Name = "TBTelefono";
             TBTelefono.Size = new Size(183, 23);
             TBTelefono.TabIndex = 5;
@@ -199,7 +179,7 @@
             LTelefono.AutoSize = true;
             LTelefono.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LTelefono.ForeColor = SystemColors.ActiveCaptionText;
-            LTelefono.Location = new Point(24, 298);
+            LTelefono.Location = new Point(24, 247);
             LTelefono.Name = "LTelefono";
             LTelefono.Size = new Size(93, 25);
             LTelefono.TabIndex = 52;
@@ -207,17 +187,18 @@
             // 
             // TBDireccion
             // 
-            TBDireccion.Location = new Point(182, 344);
+            TBDireccion.Location = new Point(182, 293);
             TBDireccion.Name = "TBDireccion";
             TBDireccion.Size = new Size(183, 23);
             TBDireccion.TabIndex = 6;
+            TBDireccion.TextChanged += TBDireccion_TextChanged;
             // 
             // LDireccion
             // 
             LDireccion.AutoSize = true;
             LDireccion.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LDireccion.ForeColor = SystemColors.ActiveCaptionText;
-            LDireccion.Location = new Point(24, 344);
+            LDireccion.Location = new Point(24, 293);
             LDireccion.Name = "LDireccion";
             LDireccion.Size = new Size(99, 25);
             LDireccion.TabIndex = 54;
@@ -227,7 +208,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(398, 518);
+            ClientSize = new Size(398, 468);
             Controls.Add(TBDireccion);
             Controls.Add(LDireccion);
             Controls.Add(TBTelefono);
@@ -238,13 +219,11 @@
             Controls.Add(LNuevoCliente);
             Controls.Add(BAgregar);
             Controls.Add(TBCorreo);
-            Controls.Add(LDNI);
-            Controls.Add(TBDNI);
-            Controls.Add(TBApellido);
+            Controls.Add(LCuit);
+            Controls.Add(TBCuit);
             Controls.Add(TBNombre);
             Controls.Add(LCorreo);
             Controls.Add(LNombre);
-            Controls.Add(LApellido);
             Name = "NewClient";
             Text = "NewClient";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -261,13 +240,11 @@
         private Label LNuevoCliente;
         private Button BAgregar;
         private TextBox TBCorreo;
-        private Label LDNI;
-        private TextBox TBDNI;
-        private TextBox TBApellido;
+        private Label LCuit;
+        private TextBox TBCuit;
         private TextBox TBNombre;
         private Label LCorreo;
         private Label LNombre;
-        private Label LApellido;
         private TextBox TBTelefono;
         private Label LTelefono;
         private TextBox TBDireccion;
